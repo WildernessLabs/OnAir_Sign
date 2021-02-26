@@ -354,3 +354,4 @@ MigrationBackup/
 
 # macOS bullshit
 **/.DS_Store
+Source/OnAir_Sign/OnAir_Sign.App/OnAir_Sign.App.Android/Resources/Resource.designer.cs
