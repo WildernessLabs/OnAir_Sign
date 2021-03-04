@@ -74,7 +74,9 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\network_security_config.xml" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnAir_Sign.App\OnAir_Sign.App.csproj">
       <Project>{A2ADF992-62AA-4F01-9A42-A48ACE426FC3}</Project>

@@ -130,6 +130,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="icon_connect.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +149,10 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Web.Maple\Driver\Web.Maple.Client\Meadow.Foundation.Web.Maple.Client.csproj">
+      <Project>{01619c06-66a5-4ecf-8652-91fcd0dc1225}</Project>
+      <Name>Meadow.Foundation.Web.Maple.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnAir_Sign.App\OnAir_Sign.App.csproj">
       <Project>{A2ADF992-62AA-4F01-9A42-A48ACE426FC3}</Project>
       <Name>OnAir_Sign.App</Name>

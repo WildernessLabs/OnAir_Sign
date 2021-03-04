@@ -73,26 +73,38 @@ namespace OnAir_Sign.App.ViewModel
 
         public MainViewModel()
         {
-            signClient = new SignClient();
             HostList = new ObservableCollection<ServerModel>();
 
+            signClient = new SignClient();
+            signClient.Servers.CollectionChanged += ServersCollectionChanged;
+            
             SendCommand = new Command(async (s) => await SendSignTextCommandAsync((string)s));
 
-            ConnectCommand = new Command(async () => await SendSignTextCommandAsync("StartSweep"));
+            ConnectCommand = new Command(() => { ShowConfig = false; IsBusy = false; }); 
 
-            SearchServersCommand = new Command(async () => await GetServersAsync());
+            SearchServersCommand = new Command(async () => await GetServers());
 
-            //GetServersAsync();
+            GetServers();
         }
 
-        async Task GetServersAsync()
+        async Task GetServers()
         {
+            IsBusy = true;
+            
+            IsLoading = true;
+
+            IsEmpty = false;
             Status = "Looking for servers";
-
-            HostList.Clear();
-
+            
             await signClient.StartScanningForAdvertisingServers();
-            signClient.Servers.CollectionChanged += ServersCollectionChanged;
+
+            if (HostList.Count == 0)
+            {
+                Status = "No servers found...";
+                IsEmpty = true;
+            }
+
+            IsLoading = false;
         }
 
         void ServersCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -117,8 +129,10 @@ namespace OnAir_Sign.App.ViewModel
             }
             else
             {
-                SelectedServer = HostList[0];
                 Status = "Select a server";
+                IsEmpty = false;
+
+                SelectedServer = HostList[0];                                
                 ShowConfig = true;
             }
         }
@@ -137,7 +151,7 @@ namespace OnAir_Sign.App.ViewModel
             }
             else
             {
-                await GetServersAsync();
+                await GetServers();
             }
         }
 
