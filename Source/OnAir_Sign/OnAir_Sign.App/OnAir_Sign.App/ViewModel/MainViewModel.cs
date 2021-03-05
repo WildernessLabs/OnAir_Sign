@@ -1,6 +1,5 @@
 ﻿using Meadow.Foundation.Maple.Client;
 using OnAir_Sign.App.Client;
-using OnAir_Sign.App.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -58,14 +57,14 @@ namespace OnAir_Sign.App.ViewModel
             set { textSign = value; OnPropertyChanged(nameof(TextSign)); }
         }
 
-        MapleServerModel _selectedServer;
-        public MapleServerModel SelectedServer
+        ServerModel _selectedServer;
+        public ServerModel SelectedServer
         {
             get => _selectedServer;
             set { _selectedServer = value; OnPropertyChanged(nameof(SelectedServer)); }
         }
 
-        public ObservableCollection<MapleServerModel> HostList { get; set; }
+        public ObservableCollection<ServerModel> HostList { get; set; }
 
         public Command SendCommand { private set; get; }
 
@@ -75,7 +74,7 @@ namespace OnAir_Sign.App.ViewModel
 
         public MainViewModel()
         {
-            HostList = new ObservableCollection<MapleServerModel>();
+            HostList = new ObservableCollection<ServerModel>();
 
             //mapleClient = new MapleClient();
             //mapleClient.StartScanningForAdvertisingServers();
@@ -128,7 +127,7 @@ namespace OnAir_Sign.App.ViewModel
                 case NotifyCollectionChangedAction.Add:
                     foreach (ServerModel server in e.NewItems)
                     {
-                        HostList.Add(new MapleServerModel(server.Name, server.IpAddress));
+                        HostList.Add(new ServerModel() { Name = $"{server.Name} ({server.IpAddress})", IpAddress = server.IpAddress });
                         Console.WriteLine($"'{server.Name}' @ ip:[{server.IpAddress}]");
                     }
                     break;
