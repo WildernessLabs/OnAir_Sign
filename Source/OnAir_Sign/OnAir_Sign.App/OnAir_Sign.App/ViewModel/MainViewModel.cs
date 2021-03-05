@@ -1,17 +1,19 @@
 ﻿using Meadow.Foundation.Maple.Client;
+using OnAir_Sign.App.Client;
+using OnAir_Sign.App.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using OnAir_Sign.App.Client;
 using Xamarin.Forms;
 
 namespace OnAir_Sign.App.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        MapleClient mapleClient;
         SignClient signClient;
 
         bool _isBusy;
@@ -56,14 +58,14 @@ namespace OnAir_Sign.App.ViewModel
             set { textSign = value; OnPropertyChanged(nameof(TextSign)); }
         }
 
-        ServerModel _selectedServer;
-        public ServerModel SelectedServer
+        MapleServerModel _selectedServer;
+        public MapleServerModel SelectedServer
         {
             get => _selectedServer;
             set { _selectedServer = value; OnPropertyChanged(nameof(SelectedServer)); }
         }
 
-        public ObservableCollection<ServerModel> HostList { get; set; }
+        public ObservableCollection<MapleServerModel> HostList { get; set; }
 
         public Command SendCommand { private set; get; }
 
@@ -73,7 +75,11 @@ namespace OnAir_Sign.App.ViewModel
 
         public MainViewModel()
         {
-            HostList = new ObservableCollection<ServerModel>();
+            HostList = new ObservableCollection<MapleServerModel>();
+
+            //mapleClient = new MapleClient();
+            //mapleClient.StartScanningForAdvertisingServers();
+            //mapleClient.Servers.CollectionChanged += ServersCollectionChanged;
 
             signClient = new SignClient();
             signClient.Servers.CollectionChanged += ServersCollectionChanged;
@@ -103,6 +109,14 @@ namespace OnAir_Sign.App.ViewModel
                 Status = "No servers found...";
                 IsEmpty = true;
             }
+            else
+            {
+                Status = "Select a server";
+                IsEmpty = false;
+
+                SelectedServer = HostList[0];
+                ShowConfig = true;
+            }
 
             IsLoading = false;
         }
@@ -114,27 +128,13 @@ namespace OnAir_Sign.App.ViewModel
                 case NotifyCollectionChangedAction.Add:
                     foreach (ServerModel server in e.NewItems)
                     {
-                        HostList.Add(server);
+                        HostList.Add(new MapleServerModel(server.Name, server.IpAddress));
                         Console.WriteLine($"'{server.Name}' @ ip:[{server.IpAddress}]");
                     }
                     break;
             }
 
             IsLoading = false;
-
-            if (HostList.Count == 0)
-            {
-                Status = "No servers found...";
-                IsEmpty = true;
-            }
-            else
-            {
-                Status = "Select a server";
-                IsEmpty = false;
-
-                SelectedServer = HostList[0];                                
-                ShowConfig = true;
-            }
         }
 
         async Task SendSignTextCommandAsync(string text)
