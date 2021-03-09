@@ -132,13 +132,16 @@ namespace OnAir_Sign.App.ViewModel
         }
 
         async Task SendSignTextCommandAsync()
-        {          
+        {
+            IsBusy = true;
+            IsLoading = true;
             Status = "Sending command...";
 
             bool isSuccessful = await signClient.SetSignText(SelectedServer, TextSign);
 
             if (isSuccessful)
             {
+                IsLoading = false;
                 IsBusy = false;
             }
             else
