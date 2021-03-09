@@ -1,4 +1,6 @@
 ﻿using Meadow.Foundation.Maple.Client;
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace OnAir_Sign.App.Client
@@ -11,6 +13,26 @@ namespace OnAir_Sign.App.Client
         public async Task<bool> SetSignTextAsync(ServerModel server, string text)
         {
             return (await SendCommandAsync("SignText?text=" + text, server.IpAddress));
+        }
+
+        public async Task<bool> SetSignText(ServerModel server, string text)
+        {
+            var client = new HttpClient
+            {
+                BaseAddress = new Uri($"http://{server.IpAddress}:5417/"),
+                Timeout = TimeSpan.FromSeconds(ListenTimeout)
+            };
+
+            try
+            {
+                var response = await client.GetAsync("SignText?text=" + text, HttpCompletionOption.ResponseContentRead);                
+                return response.IsSuccessStatusCode;                
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }

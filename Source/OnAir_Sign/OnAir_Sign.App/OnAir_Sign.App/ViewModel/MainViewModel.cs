@@ -12,7 +12,6 @@ namespace OnAir_Sign.App.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        MapleClient mapleClient;
         SignClient signClient;
 
         bool _isBusy;
@@ -76,14 +75,10 @@ namespace OnAir_Sign.App.ViewModel
         {
             HostList = new ObservableCollection<ServerModel>();
 
-            //mapleClient = new MapleClient();
-            //mapleClient.StartScanningForAdvertisingServers();
-            //mapleClient.Servers.CollectionChanged += ServersCollectionChanged;
-
             signClient = new SignClient();
             signClient.Servers.CollectionChanged += ServersCollectionChanged;
             
-            SendCommand = new Command(async (s) => await SendSignTextCommandAsync((string)s));
+            SendCommand = new Command(async () => await SendSignTextCommandAsync());
 
             ConnectCommand = new Command(() => { ShowConfig = false; IsBusy = false; }); 
 
@@ -136,13 +131,11 @@ namespace OnAir_Sign.App.ViewModel
             IsLoading = false;
         }
 
-        async Task SendSignTextCommandAsync(string text)
-        {
-            bool isSuccessful = false;
-
+        async Task SendSignTextCommandAsync()
+        {          
             Status = "Sending command...";
 
-            isSuccessful = await signClient.SetSignTextAsync(SelectedServer, text);
+            bool isSuccessful = await signClient.SetSignText(SelectedServer, TextSign);
 
             if (isSuccessful)
             {

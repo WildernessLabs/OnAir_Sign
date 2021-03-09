@@ -25,12 +25,12 @@
                 <Label Grid.Row="1" Text="Enter Message:" TextColor="Black" Margin="0,10,0,0" />
 
                 <Frame Grid.Row="2" Padding="10" HasShadow="False" BorderColor="#333" BackgroundColor="White" CornerRadius="5">
-                    <Entry Text="Hello World" TextColor="#333" HorizontalTextAlignment="Center" BackgroundColor="Transparent" />
+                    <Entry Text="{Binding TextSign}" Placeholder="Hello" TextColor="#333" HorizontalTextAlignment="Center" BackgroundColor="Transparent" />
                 </Frame>
 
                 <Button Grid.Row="3" Text="Send text to sign" CornerRadius="5"
                     Style="{StaticResource ButtonStyle}" BackgroundColor="#7ed321"
-                    Command="{Binding SendCommand}" CommandParameter="RotateTo">
+                    Command="{Binding SendCommand}">
                     <Button.Triggers>
                         <DataTrigger TargetType="Button" Binding="{Binding IsRotating}" Value="true">
                             <Setter Property="BackgroundColor" Value="{StaticResource ButtonActive}" />

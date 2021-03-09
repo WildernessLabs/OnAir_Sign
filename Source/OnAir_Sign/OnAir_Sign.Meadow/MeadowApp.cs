@@ -48,7 +48,7 @@ namespace OnAir_Sign.Meadow
 
             // create our maple web server
             mapleServer = new MapleServer(
-                Device.WiFiAdapter.IpAddress
+                Device.WiFiAdapter.IpAddress, 5417, true
                 );
 
             Console.WriteLine("Initialization complete.");
