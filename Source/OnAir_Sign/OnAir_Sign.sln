@@ -17,13 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Displays.Max7219", "..\..\.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroGraphics", "..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Graphics\MicroGraphics\Driver\Graphics.MicroGraphics\MicroGraphics.csproj", "{DDF4334D-15A9-48B9-9684-13464DE16B32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnAir_Sign.App.UWP", "OnAir_Sign.App\OnAir_Sign.App.UWP\OnAir_Sign.App.UWP.csproj", "{29BDFA94-F917-4654-B176-8880F1B4283F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnAir_Sign.Client.UWP", "OnAir_Sign.Client\OnAir_Sign.Client.UWP\OnAir_Sign.Client.UWP.csproj", "{29BDFA94-F917-4654-B176-8880F1B4283F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnAir_Sign.App.Android", "OnAir_Sign.App\OnAir_Sign.App.Android\OnAir_Sign.App.Android.csproj", "{6B182264-676E-4363-B624-B9FAE2C72469}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnAir_Sign.Client.Android", "OnAir_Sign.Client\OnAir_Sign.Client.Android\OnAir_Sign.Client.Android.csproj", "{6B182264-676E-4363-B624-B9FAE2C72469}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnAir_Sign.App.iOS", "OnAir_Sign.App\OnAir_Sign.App.iOS\OnAir_Sign.App.iOS.csproj", "{E763B14D-1408-4890-A831-1EAD1C04DA83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnAir_Sign.Client.iOS", "OnAir_Sign.Client\OnAir_Sign.Client.iOS\OnAir_Sign.Client.iOS.csproj", "{E763B14D-1408-4890-A831-1EAD1C04DA83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnAir_Sign.App", "OnAir_Sign.App\OnAir_Sign.App\OnAir_Sign.App.csproj", "{257A851F-675F-4452-BA7F-0A31DC512D27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnAir_Sign.Client", "OnAir_Sign.Client\OnAir_Sign.Client\OnAir_Sign.Client.csproj", "{257A851F-675F-4452-BA7F-0A31DC512D27}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meadow.Foundation.Web.Maple.Client", "..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Web.Maple\Driver\Web.Maple.Client\Meadow.Foundation.Web.Maple.Client.csproj", "{01619C06-66A5-4ECF-8652-91FCD0DC1225}"
 EndProject
