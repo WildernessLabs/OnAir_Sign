@@ -178,9 +178,9 @@
       <Project>{01619c06-66a5-4ecf-8652-91fcd0dc1225}</Project>
       <Name>Meadow.Foundation.Web.Maple.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OnAir_Sign.App\OnAir_Sign.App.csproj">
-      <Project>{A2ADF992-62AA-4F01-9A42-A48ACE426FC3}</Project>
-      <Name>OnAir_Sign.App</Name>
+    <ProjectReference Include="..\OnAir_Sign.Client\OnAir_Sign.Client.csproj">
+      <Project>{257a851f-675f-4452-ba7f-0a31dc512d27}</Project>
+      <Name>OnAir_Sign.Client</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

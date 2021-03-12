@@ -80,12 +80,6 @@
     <AndroidResource Include="Resources\xml\network_security_config.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OnAir_Sign.App\OnAir_Sign.App.csproj">
-      <Project>{A2ADF992-62AA-4F01-9A42-A48ACE426FC3}</Project>
-      <Name>OnAir_Sign.App</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon_launcher.png" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +141,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnAir_Sign.Client\OnAir_Sign.Client.csproj">
+      <Project>{257a851f-675f-4452-ba7f-0a31dc512d27}</Project>
+      <Name>OnAir_Sign.Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
