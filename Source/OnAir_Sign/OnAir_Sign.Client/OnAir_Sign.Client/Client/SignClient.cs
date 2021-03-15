@@ -15,7 +15,7 @@ namespace OnAir_Sign.App.Client
             return (await SendCommandAsync("SignText?text=" + text, server.IpAddress));
         }
 
-        public async Task<bool> SetSignText(ServerModel server, string text)
+        public async Task<HttpResponseMessage> SetSignText(ServerModel server, string text)
         {
             var client = new HttpClient
             {
@@ -26,12 +26,12 @@ namespace OnAir_Sign.App.Client
             try
             {
                 var response = await client.GetAsync("SignText?text=" + text, HttpCompletionOption.ResponseContentRead);                
-                return response.IsSuccessStatusCode;                
+                return response;                
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                return false;
+                return null;
             }
         }
     }

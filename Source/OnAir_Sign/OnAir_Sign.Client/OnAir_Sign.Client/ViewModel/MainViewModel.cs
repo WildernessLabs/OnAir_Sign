@@ -14,11 +14,11 @@ namespace OnAir_Sign.App.ViewModel
     {
         SignClient signClient;
 
-        bool _isBusy;
-        public bool IsBusy
+        bool isBlockerVisible;
+        public bool IsBlockerVisible
         {
-            get => _isBusy;
-            set { _isBusy = value; OnPropertyChanged(nameof(IsBusy)); }
+            get => isBlockerVisible;
+            set { isBlockerVisible = value; OnPropertyChanged(nameof(IsBlockerVisible)); }
         }
 
         bool _isLoading;
@@ -80,7 +80,7 @@ namespace OnAir_Sign.App.ViewModel
             
             SendCommand = new Command(async () => await SendSignTextCommandAsync());
 
-            ConnectCommand = new Command(() => { ShowConfig = false; IsBusy = false; }); 
+            ConnectCommand = new Command(() => { ShowConfig = false; IsBlockerVisible = false; }); 
 
             SearchServersCommand = new Command(async () => await GetServers());
 
@@ -89,7 +89,7 @@ namespace OnAir_Sign.App.ViewModel
 
         async Task GetServers()
         {
-            IsBusy = true;
+            IsBlockerVisible = true;
             
             IsLoading = true;
 
@@ -133,21 +133,19 @@ namespace OnAir_Sign.App.ViewModel
 
         async Task SendSignTextCommandAsync()
         {
-            IsBusy = true;
+            IsBlockerVisible = true;
             IsLoading = true;
             Status = "Sending command...";
 
-            bool isSuccessful = await signClient.SetSignText(SelectedServer, TextSign);
+            var response = await signClient.SetSignText(SelectedServer, TextSign);
 
-            if (isSuccessful)
+            if (!response.IsSuccessStatusCode)
             {
-                IsLoading = false;
-                IsBusy = false;
+                await App.Current.DisplayAlert("Error", response.StatusCode.ToString(), "Close");
             }
-            else
-            {
-                await GetServers();
-            }
+
+            IsLoading = false;
+            IsBlockerVisible = false;
         }
 
         #region INotifyPropertyChanged Implementation
