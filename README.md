@@ -4,9 +4,23 @@ OnAir Sign is a WiFi-controlled, Meadow-powered, interactive sign.
 
 It runs Maple.Server, which allows you to control the text on the display via a Web API. 
 
-## Circuit
+<img src="OnAir.jpg" 
+    style="width: 60%; display: block; margin-left: auto; margin-right: auto;" />
 
-[tbd]
+## OnAir Sign Circuit
+
+For this project you need to connect an array of 4 Max7219 LED dot matrix to Meadow's ISP pins as shown in the Fritzing Diagram below:
+
+<img src="OnAir_Fritzing_Diagram.png" 
+    style="width: 60%; display: block; margin-left: auto; margin-right: auto;" />
+
+## Projects
+
+* **OnAir_Sign.Clima** - Xamarin.Forms application that listens to Maple's UDP broadcasts to obtain the server and sends GET requests to Meadow to display text on the LED display.
+* **OnAir_Sign.Clima.Android** - Android platform specific project.
+* **OnAir_Sign.Clima.iOS** - iOS platform specific project.
+* **OnAir_Sign.Clima.UWP** - UWP platform specific project.
+* **OnAir_Sign.Meadow** - A meadow application that runs a Maple server, broadcasting the server information in the network and taking GET requests to show text on the MAX7212 LED display.
 
 ## Authors
 
