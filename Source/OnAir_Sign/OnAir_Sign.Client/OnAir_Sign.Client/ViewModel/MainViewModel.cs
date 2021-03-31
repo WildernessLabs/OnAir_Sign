@@ -14,39 +14,18 @@ namespace OnAir_Sign.App.ViewModel
     {
         SignClient signClient;
 
-        bool isBlockerVisible;
-        public bool IsBlockerVisible
+        bool _isBusy;
+        public bool IsBusy
         {
-            get => isBlockerVisible;
-            set { isBlockerVisible = value; OnPropertyChanged(nameof(IsBlockerVisible)); }
+            get => _isBusy;
+            set { _isBusy = value; OnPropertyChanged(nameof(IsBusy)); }
         }
 
-        bool _isLoading;
-        public bool IsLoading
+        bool _isServerListEmpty;
+        public bool IsServerListEmpty
         {
-            get => _isLoading;
-            set { _isLoading = value; OnPropertyChanged(nameof(IsLoading)); }
-        }
-
-        bool _isEmpty;
-        public bool IsEmpty
-        {
-            get => _isEmpty;
-            set { _isEmpty = value; OnPropertyChanged(nameof(IsEmpty)); }
-        }
-
-        string _status;
-        public string Status
-        {
-            get => _status;
-            set { _status = value; OnPropertyChanged(nameof(Status)); }
-        }
-
-        bool _showConfig;
-        public bool ShowConfig
-        {
-            get => _showConfig;
-            set { _showConfig = value; OnPropertyChanged(nameof(ShowConfig)); }
+            get => _isServerListEmpty;
+            set { _isServerListEmpty = value; OnPropertyChanged(nameof(IsServerListEmpty)); }
         }
 
         string textSign;
@@ -67,8 +46,6 @@ namespace OnAir_Sign.App.ViewModel
 
         public Command SendCommand { private set; get; }
 
-        public Command ConnectCommand { private set; get; }
-
         public Command SearchServersCommand { private set; get; }
 
         public MainViewModel()
@@ -80,39 +57,28 @@ namespace OnAir_Sign.App.ViewModel
             
             SendCommand = new Command(async () => await SendSignTextCommandAsync());
 
-            ConnectCommand = new Command(() => { ShowConfig = false; IsBlockerVisible = false; }); 
-
             SearchServersCommand = new Command(async () => await GetServers());
-
-            GetServers();
         }
 
-        async Task GetServers()
+        public async Task GetServers()
         {
-            IsBlockerVisible = true;
-            
-            IsLoading = true;
+            IsBusy = true;
 
-            IsEmpty = false;
-            Status = "Looking for servers";
-            
+            IsServerListEmpty = false;
+
             await signClient.StartScanningForAdvertisingServers();
 
             if (HostList.Count == 0)
             {
-                Status = "No servers found...";
-                IsEmpty = true;
+                IsServerListEmpty = true;
             }
             else
             {
-                Status = "Select a server";
-                IsEmpty = false;
-
+                IsServerListEmpty = false;
                 SelectedServer = HostList[0];
-                ShowConfig = true;
             }
 
-            IsLoading = false;
+            IsBusy = false;
         }
 
         void ServersCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -128,14 +94,12 @@ namespace OnAir_Sign.App.ViewModel
                     break;
             }
 
-            IsLoading = false;
+            IsBusy = false;
         }
 
         async Task SendSignTextCommandAsync()
         {
-            IsBlockerVisible = true;
-            IsLoading = true;
-            Status = "Sending command...";
+            IsBusy = true;
 
             var response = await signClient.SetSignText(SelectedServer, TextSign);
 
@@ -144,8 +108,7 @@ namespace OnAir_Sign.App.ViewModel
                 await App.Current.DisplayAlert("Error", response.StatusCode.ToString(), "Close");
             }
 
-            IsLoading = false;
-            IsBlockerVisible = false;
+            IsBusy = false;
         }
 
         #region INotifyPropertyChanged Implementation

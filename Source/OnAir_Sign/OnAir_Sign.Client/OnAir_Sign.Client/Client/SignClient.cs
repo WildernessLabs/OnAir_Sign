@@ -26,7 +26,7 @@ namespace OnAir_Sign.App.Client
             try
             {
                 var response = await client.GetAsync("SignText?text=" + text, HttpCompletionOption.ResponseContentRead);                
-                return response;                
+                return response;
             }
             catch (Exception ex)
             {
