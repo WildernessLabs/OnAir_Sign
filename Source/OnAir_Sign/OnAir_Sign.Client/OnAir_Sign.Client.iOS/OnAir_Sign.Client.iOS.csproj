@@ -128,19 +128,19 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <BundleResource Include="Resources\icon_connect%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon_connect%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon_connect.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\OnAir_Sign.Client\OnAir_Sign.Client.csproj">
       <Project>{257a851f-675f-4452-ba7f-0a31dc512d27}</Project>
       <Name>OnAir_Sign.Client</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_search%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_search%402x.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
