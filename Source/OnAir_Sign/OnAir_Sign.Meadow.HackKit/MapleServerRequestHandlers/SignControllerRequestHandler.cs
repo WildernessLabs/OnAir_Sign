@@ -2,7 +2,7 @@
 using Meadow.Foundation.Web.Maple.Server.Routing;
 using System;
 
-namespace OnAir_Sign.Meadow.MapleServerRequestHandlers
+namespace OnAir_Sign.Meadow.HackKit.MapleServerRequestHandlers
 {
     public class SignControllerRequestHandler : RequestHandlerBase
     {
@@ -14,9 +14,9 @@ namespace OnAir_Sign.Meadow.MapleServerRequestHandlers
             string text = base.QueryString["text"] as string;
             DisplayController.Current.ShowText(text);
 
-            this.Context.Response.ContentType = ContentTypes.Application_Text;
-            this.Context.Response.StatusCode = 200;
-            _ = this.Send($"{text} received");
+            Context.Response.ContentType = ContentTypes.Application_Text;
+            Context.Response.StatusCode = 200;
+            _ = Send($"{text} received");
         }
     }
 }

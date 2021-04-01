@@ -7,7 +7,7 @@ using Meadow.Gateway.WiFi;
 using System;
 using System.Threading.Tasks;
 
-namespace OnAir_Sign.Meadow
+namespace OnAir_Sign.Meadow.HackKit
 {
     public class MeadowApp : App<F7Micro, MeadowApp>
     {
@@ -28,6 +28,8 @@ namespace OnAir_Sign.Meadow
 
         async Task Initialize()
         {
+            Console.WriteLine("Initialize hardware...");
+
             var onboardLed = new RgbPwmLed(device: Device,
                 redPwmPin: Device.Pins.OnboardLedRed,
                 greenPwmPin: Device.Pins.OnboardLedGreen,
@@ -41,14 +43,16 @@ namespace OnAir_Sign.Meadow
             Console.WriteLine("Initialize hardware...");
 
             // initialize the wifi adpater
-            if (!Device.InitWiFiAdapter().Result) {
+            if (!Device.InitWiFiAdapter().Result)
+            {
                 throw new Exception("Could not initialize the WiFi adapter.");
             }
 
             // connnect to the wifi network.
             Console.WriteLine($"Connecting to WiFi Network {Secrets.WIFI_NAME}");
             var connectionResult = await Device.WiFiAdapter.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD);
-            if (connectionResult.ConnectionStatus != ConnectionStatus.Success) {
+            if (connectionResult.ConnectionStatus != ConnectionStatus.Success)
+            {
                 throw new Exception($"Cannot connect to network: {connectionResult.ConnectionStatus}");
             }
             Console.WriteLine($"Connected. IP: {Device.WiFiAdapter.IpAddress}");

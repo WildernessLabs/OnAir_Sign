@@ -24,7 +24,7 @@
     <ContentPage.Content>
         <Grid>
             <StackLayout Padding="30">
-                <Label Text="Control RGB LED using Maple" TextColor="Black" FontSize="Large" FontAttributes="Bold" />
+                <Label Text="OnAir Companion App" TextColor="Black" FontSize="Large" FontAttributes="Bold" />
 
                 <Label Text="Maple servers:" TextColor="Black" Margin="0,10,0,10" />
 
