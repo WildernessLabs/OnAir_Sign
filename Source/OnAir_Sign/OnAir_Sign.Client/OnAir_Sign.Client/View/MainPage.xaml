@@ -45,7 +45,6 @@
                         <Grid Grid.Column="1" WidthRequest="50" HeightRequest="50">
                             <Button Command="{Binding SearchServersCommand}" BackgroundColor="Transparent" CornerRadius="5" />
                             <Image Source="icon_search.png" Margin="10" InputTransparent="True" />
-                            <ActivityIndicator IsVisible="{Binding IsBusy}" Color="White" IsRunning="true" Scale="0.75" BackgroundColor="#23ABE3" />
                         </Grid>
                     </Grid>
                 </Frame>
@@ -66,7 +65,7 @@
 
                         <Label Grid.Column="2" Text="Port:" TextColor="White" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center"  />
 
-                        <Entry Grid.Column="3" Text="5417" TextColor="White" FontSize="Medium" 
+                        <Entry Grid.Column="3" Text="{Binding ServerPort}" TextColor="White" FontSize="Medium" Keyboard="Numeric"
                             BackgroundColor="#AB5D30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     </Grid>
                 </Frame>
@@ -80,90 +79,18 @@
                 <Button Grid.Row="3" Text="Send text to sign" CornerRadius="5"
                     Style="{StaticResource ButtonStyle}" BackgroundColor="#7ed321"
                     Command="{Binding SendCommand}">
-                    <Button.Triggers>
-                        <DataTrigger TargetType="Button" Binding="{Binding IsRotating}" Value="true">
-                            <Setter Property="BackgroundColor" Value="{StaticResource ButtonActive}" />
-                        </DataTrigger>
-                        <DataTrigger TargetType="Button" Binding="{Binding IsRotating}" Value="false">
-                            <Setter Property="BackgroundColor" Value="{StaticResource ButtonInactive}" />
-                        </DataTrigger>
-                    </Button.Triggers>
                 </Button>
-
 
                 <Label Text="By Wilderness Labs" TextColor="Black" 
-                      HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
+                    HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
             </StackLayout>
-            
-            <!--<Grid RowSpacing="15" Padding="30">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                
-                <Label Grid.Row="0" Text="On Air Sign Controller" TextColor="Black" FontSize="Large" FontAttributes="Bold" />
 
-                <Label Grid.Row="1" Text="Enter Message:" TextColor="Black" Margin="0,10,0,0" />
-
-                <Frame Grid.Row="2" Padding="10" HasShadow="False" BorderColor="#333" BackgroundColor="White" CornerRadius="5">
-                    <Entry Text="{Binding TextSign}" Placeholder="Hello" TextColor="#333" HorizontalTextAlignment="Center" BackgroundColor="Transparent" />
-                </Frame>
-
-                <Button Grid.Row="3" Text="Send text to sign" CornerRadius="5"
-                    Style="{StaticResource ButtonStyle}" BackgroundColor="#7ed321"
-                    Command="{Binding SendCommand}">
-                    <Button.Triggers>
-                        <DataTrigger TargetType="Button" Binding="{Binding IsRotating}" Value="true">
-                            <Setter Property="BackgroundColor" Value="{StaticResource ButtonActive}" />
-                        </DataTrigger>
-                        <DataTrigger TargetType="Button" Binding="{Binding IsRotating}" Value="false">
-                            <Setter Property="BackgroundColor" Value="{StaticResource ButtonInactive}" />
-                        </DataTrigger>
-                    </Button.Triggers>
-                </Button>
-
-                <Frame Grid.Row="5" BorderColor="Black" BackgroundColor="#EEE" Padding="15" CornerRadius="5">
-                    <Label Text="{Binding SelectedServer.Name}" FontAttributes="Bold" TextColor="#888"  />
-                </Frame>
-
-                <Button Grid.Row="6" Text="Change Servers" Command="{Binding SearchServersCommand}" CornerRadius="5"
-                    Style="{StaticResource ButtonStyle}"
-                    BackgroundColor="#B09679" />
-            </Grid>
-
-
-            <Grid IsVisible="{Binding IsBlockerVisible}" BackgroundColor="#AA000000" Padding="60">
-                <StackLayout Spacing="10" VerticalOptions="Center">
-                    <ActivityIndicator Color="White" IsVisible="{Binding IsLoading}" IsRunning="True" />
-
-                    <Label Text="{Binding Status}" TextColor="White" HorizontalOptions="Center" />
-
-                    <Frame IsVisible="{Binding ShowConfig}" BackgroundColor="White" HasShadow="false" Padding="15,0,0,0">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <Picker TextColor="Black" BackgroundColor="Transparent" VerticalOptions="Center"
-                                ItemsSource="{Binding HostList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedServer}" />
-
-                            <Grid Grid.Column="1" WidthRequest="50">
-                                <Image Source="icon_connect.png" Scale="0.8" />
-                                <Button Command="{Binding ConnectCommand}" BackgroundColor="Transparent" />
-                            </Grid>
-                        </Grid>
-                    </Frame>
-
-                    <Button Text="Retry" Command="{Binding SearchServersCommand}" IsVisible="{Binding IsEmpty}"
-                        TextColor="White" FontAttributes="Bold" FontSize="Large" BackgroundColor="#23ABE3" />
+            <Grid IsVisible="{Binding IsBusy}" BackgroundColor="#88000000">
+                <StackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="Please Wait..." TextColor="White" HorizontalOptions="Center" />
+                    <ActivityIndicator Color="White" IsRunning="True"  />
                 </StackLayout>
-            </Grid>-->
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -10,9 +10,9 @@ namespace OnAir_Sign.App.Client
         public SignClient(int listenPort = 17756, int listenTimeout = 5000) : 
             base(listenPort, listenTimeout) { }
 
-        public async Task<bool> SetSignTextAsync(ServerModel server, string text)
+        public async Task<bool> SetSignTextAsync(ServerModel server, int serverPort, string text)
         {
-            return (await SendCommandAsync("SignText?text=" + text, server.IpAddress));
+            return (await SendCommandAsync($"SignText?text={text}", $"{server.IpAddress}:{serverPort}"));
         }
 
         public async Task<HttpResponseMessage> SetSignText(ServerModel server, string text)

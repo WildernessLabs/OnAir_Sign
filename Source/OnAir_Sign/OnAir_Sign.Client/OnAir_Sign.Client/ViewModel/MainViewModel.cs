@@ -35,6 +35,13 @@ namespace OnAir_Sign.App.ViewModel
             set { textSign = value; OnPropertyChanged(nameof(TextSign)); }
         }
 
+        int serverPort;
+        public int ServerPort 
+        {
+            get => serverPort;
+            set { serverPort = value; OnPropertyChanged(nameof(ServerPort)); }
+        }
+
         ServerModel _selectedServer;
         public ServerModel SelectedServer
         {
@@ -51,6 +58,8 @@ namespace OnAir_Sign.App.ViewModel
         public MainViewModel()
         {
             HostList = new ObservableCollection<ServerModel>();
+
+            ServerPort = 5417;
 
             signClient = new SignClient();
             signClient.Servers.CollectionChanged += ServersCollectionChanged;
@@ -93,19 +102,19 @@ namespace OnAir_Sign.App.ViewModel
                     }
                     break;
             }
-
-            IsBusy = false;
         }
 
         async Task SendSignTextCommandAsync()
         {
+            if (IsBusy)
+                return;
             IsBusy = true;
 
-            var response = await signClient.SetSignText(SelectedServer, TextSign);
+            bool success = await signClient.SetSignTextAsync(SelectedServer, ServerPort, TextSign);
 
-            if (!response.IsSuccessStatusCode)
+            if (!success)
             {
-                await App.Current.DisplayAlert("Error", response.StatusCode.ToString(), "Close");
+                await App.Current.DisplayAlert("Error", "Something went wrong", "Close");
             }
 
             IsBusy = false;

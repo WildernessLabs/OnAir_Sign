@@ -7,11 +7,11 @@ namespace OnAir_Sign.Meadow.HackKit
     {
         CharacterDisplay display;
 
+        protected bool initialized = false;
+
         public string Text { get; protected set; }
 
         public static DisplayController Current { get; private set; }
-
-        protected bool initialized = false;
 
         private DisplayController() { }
 
@@ -47,7 +47,7 @@ namespace OnAir_Sign.Meadow.HackKit
         {
             Text = text;
             display.ClearLines();
-            display.Write(text);
+            display.WriteLine(text, 0);
         }
     }
 }
