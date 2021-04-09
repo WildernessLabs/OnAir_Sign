@@ -109,10 +109,9 @@ namespace OnAir_Sign.App.ViewModel
             if (IsBusy)
                 return;
             IsBusy = true;
-
-            bool success = await signClient.SetSignTextAsync(SelectedServer, ServerPort, TextSign);
-
-            if (!success)
+            
+            var response = await signClient.SetSignText(SelectedServer, ServerPort, TextSign);
+            if (!response.IsSuccessStatusCode)
             {
                 await App.Current.DisplayAlert("Error", "Something went wrong", "Close");
             }
