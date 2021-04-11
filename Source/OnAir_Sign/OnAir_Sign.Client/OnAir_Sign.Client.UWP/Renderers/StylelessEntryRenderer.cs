@@ -3,10 +3,10 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 
-[assembly: ExportRenderer(typeof(Entry), typeof(StylessEntryRenderer))]
+[assembly: ExportRenderer(typeof(Entry), typeof(StylelessEntryRenderer))]
 namespace OnAir_Sign.App.UWP.Renderers
 {
-    public class StylessEntryRenderer : EntryRenderer
+    public class StylelessEntryRenderer : EntryRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {

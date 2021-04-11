@@ -96,8 +96,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\StylessButtonRenderer.cs" />
-    <Compile Include="Renderers\StylessEntryRenderer.cs" />
+    <Compile Include="Renderers\StylelessButtonRenderer.cs" />
+    <Compile Include="Renderers\StylelessEntryRenderer.cs" />
+    <Compile Include="Renderers\StylelessPickerRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
