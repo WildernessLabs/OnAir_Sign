@@ -2,7 +2,7 @@
 
 OnAir Sign is a WiFi-controlled, Meadow-powered, interactive sign.
 
-It runs Maple.Server, which allows you to control the text on the display via a Web API. 
+It runs Maple.Server, which allows you to control the text on a MAX7219 LED matrix display via a Web API. It also includes a version that you can build with a [Hack Kit](https://store.wildernesslabs.co/collections/frontpage/products/meadow-f7-micro-development-board-w-hack-kit-pro) using the LCD Character Display.
 
 <img src="OnAir.jpg" 
     style="width: 60%; display: block; margin-left: auto; margin-right: auto;" />
