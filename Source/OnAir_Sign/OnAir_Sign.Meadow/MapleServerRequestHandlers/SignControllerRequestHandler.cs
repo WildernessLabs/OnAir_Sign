@@ -11,12 +11,12 @@ namespace OnAir_Sign.Meadow.MapleServerRequestHandlers
         {
             Console.WriteLine("GET::SignText");
 
-            string text = base.QueryString["text"] as string;
+            string text = QueryString["text"];
             DisplayController.Current.ShowText(text);
 
-            this.Context.Response.ContentType = ContentTypes.Application_Text;
-            this.Context.Response.StatusCode = 200;
-            _ = this.Send($"{text} received");
+            Context.Response.ContentType = ContentTypes.Application_Text;
+            Context.Response.StatusCode = 200;
+            Send($"{text} received");
         }
     }
 }

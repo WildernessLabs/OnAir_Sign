@@ -6,7 +6,6 @@ namespace OnAir_Sign.Meadow
 {
     public class DisplayController
     {
-        // peripherals
         GraphicsLibrary canvas;
         Max7219 ledDisplay;
 
@@ -16,9 +15,7 @@ namespace OnAir_Sign.Meadow
 
         protected bool initialized = false;
 
-        private DisplayController()
-        {
-        }
+        private DisplayController() { }
 
         static DisplayController()
         {
@@ -27,7 +24,7 @@ namespace OnAir_Sign.Meadow
 
         public void Initialize()
         {
-            if(initialized) { return; }
+            if (initialized) { return; }
 
             Console.WriteLine("Initialize hardware...");
             ledDisplay = new Max7219(
@@ -45,7 +42,7 @@ namespace OnAir_Sign.Meadow
 
         public void ShowText(string text)
         {
-            this.Text = text;
+            Text = text;
 
             canvas.CurrentFont = new Font4x8();
 

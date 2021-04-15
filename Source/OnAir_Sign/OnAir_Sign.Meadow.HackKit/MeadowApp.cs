@@ -28,11 +28,11 @@ namespace OnAir_Sign.Meadow.HackKit
 
         async Task Initialize()
         {
-            var onboardLed = new RgbPwmLed(device: Device,
+            var onboardLed = new RgbPwmLed(
+                device: Device,
                 redPwmPin: Device.Pins.OnboardLedRed,
                 greenPwmPin: Device.Pins.OnboardLedGreen,
-                bluePwmPin: Device.Pins.OnboardLedBlue,
-                3.3f, 3.3f, 3.3f);
+                bluePwmPin: Device.Pins.OnboardLedBlue);
             onboardLed.SetColor(Color.Red);
 
             DisplayController.Current.Initialize();
