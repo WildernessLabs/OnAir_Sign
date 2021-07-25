@@ -32,6 +32,8 @@ namespace OnAir_Sign.Meadow
                 MeadowApp.Device.Pins.D00, deviceCount: 4,
                 maxMode: Max7219.Max7219Type.Display);
 
+            ledDisplay.IgnoreOutOfBoundsPixels = true;
+
             canvas = new GraphicsLibrary(ledDisplay);
             canvas.Rotation = GraphicsLibrary.RotationType._90Degrees;
 
