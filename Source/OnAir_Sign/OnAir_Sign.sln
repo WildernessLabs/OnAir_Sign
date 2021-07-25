@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.808.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnAir_Sign.Meadow", "OnAir_Sign.Meadow\OnAir_Sign.Meadow.csproj", "{D474C7AD-17D9-49BD-BE1F-AF5CB8CE0B1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnAir_Sign.Meadow", "OnAir_Sign.Meadow\OnAir_Sign.Meadow.csproj", "{D474C7AD-17D9-49BD-BE1F-AF5CB8CE0B1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnAir_Sign.Client.UWP", "OnAir_Sign.Client\OnAir_Sign.Client.UWP\OnAir_Sign.Client.UWP.csproj", "{29BDFA94-F917-4654-B176-8880F1B4283F}"
 EndProject
