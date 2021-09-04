@@ -14,10 +14,16 @@ namespace OnAir_Sign.Meadow
         MapleServer mapleServer;
         DisplayController displayController;
 
+        RgbPwmLed onboardLed;
+
         public MeadowApp()
         {
             // initialize our hardware and system
-            Initialize().Wait();
+            Initialize();
+
+            displayController.ShowSplashScreen();
+
+            InitializeWifi().Wait();
 
             // display a default message
             displayController.ShowText("READY");
@@ -26,9 +32,9 @@ namespace OnAir_Sign.Meadow
             mapleServer.Start();
         }
 
-        async Task Initialize()
+        void Initialize()
         {
-            var onboardLed = new RgbPwmLed(
+            onboardLed = new RgbPwmLed(
                 device: Device,
                 redPwmPin: Device.Pins.OnboardLedRed,
                 greenPwmPin: Device.Pins.OnboardLedGreen,
@@ -37,11 +43,15 @@ namespace OnAir_Sign.Meadow
 
             DisplayController.Current.Initialize();
             displayController = DisplayController.Current;
+        }
 
-            Console.WriteLine("Initialize hardware...");
+        async Task InitializeWifi()
+        { 
+            Console.WriteLine("Initialize WiFi...");
 
             // initialize the wifi adpater
-            if (!Device.InitWiFiAdapter().Result) {
+            if (!Device.InitWiFiAdapter().Result)
+            {
                 throw new Exception("Could not initialize the WiFi adapter.");
             }
 
