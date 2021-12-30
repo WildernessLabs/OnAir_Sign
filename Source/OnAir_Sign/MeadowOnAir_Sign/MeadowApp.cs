@@ -1,0 +1,69 @@
+﻿using Meadow;
+using Meadow.Devices;
+using Meadow.Foundation;
+using Meadow.Foundation.Leds;
+using Meadow.Foundation.Web.Maple.Server;
+using Meadow.Gateway.WiFi;
+using System;
+using System.Threading.Tasks;
+
+namespace MeadowOnAir_Sign
+{
+    public class MeadowApp : App<F7Micro, MeadowApp>
+    {
+        MapleServer mapleServer;
+        DisplayController displayController;
+
+        RgbPwmLed onboardLed;
+
+        public MeadowApp()
+        {
+            // initialize our hardware and system
+            Initialize();
+
+            displayController.ShowSplashScreen();
+
+            InitializeWifi().Wait();
+
+            // display a default message
+            displayController.ShowText("READY");
+
+            // start our web server
+            mapleServer.Start();
+        }
+
+        void Initialize()
+        {
+            onboardLed = new RgbPwmLed(
+                device: Device,
+                redPwmPin: Device.Pins.OnboardLedRed,
+                greenPwmPin: Device.Pins.OnboardLedGreen,
+                bluePwmPin: Device.Pins.OnboardLedBlue);
+            onboardLed.SetColor(Color.Red);
+
+            DisplayController.Current.Initialize();
+            displayController = DisplayController.Current;
+        }
+
+        async Task InitializeWifi()
+        { 
+            Console.WriteLine("Initialize WiFi...");
+
+            // connnect to the wifi network.
+            Console.WriteLine($"Connecting to WiFi Network {Secrets.WIFI_NAME}");
+            var connectionResult = await Device.WiFiAdapter.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD);
+            if (connectionResult.ConnectionStatus != ConnectionStatus.Success) {
+                throw new Exception($"Cannot connect to network: {connectionResult.ConnectionStatus}");
+            }
+            Console.WriteLine($"Connected. IP: {Device.WiFiAdapter.IpAddress}");
+
+            // create our maple web server
+            mapleServer = new MapleServer(
+                Device.WiFiAdapter.IpAddress, 5417, true
+            );
+
+            Console.WriteLine("Initialization complete.");
+            onboardLed.SetColor(Color.Green);
+        }
+    }
+}
