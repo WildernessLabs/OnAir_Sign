@@ -14,27 +14,21 @@ namespace MeadowOnAir_Sign
         MapleServer mapleServer;
         DisplayController displayController;
 
-        RgbPwmLed onboardLed;
-
         public MeadowApp()
         {
             // initialize our hardware and system
-            Initialize();
-
-            displayController.ShowSplashScreen();
-
-            InitializeWifi().Wait();
-
-            // display a default message
-            displayController.ShowText("READY");
+            Initialize().Wait();
 
             // start our web server
             mapleServer.Start();
+
+            // display a default message
+            displayController.ShowText("READY");
         }
 
-        void Initialize()
+        async Task Initialize()
         {
-            onboardLed = new RgbPwmLed(
+            var onboardLed = new RgbPwmLed(
                 device: Device,
                 redPwmPin: Device.Pins.OnboardLedRed,
                 greenPwmPin: Device.Pins.OnboardLedGreen,
@@ -43,26 +37,18 @@ namespace MeadowOnAir_Sign
 
             DisplayController.Current.Initialize();
             displayController = DisplayController.Current;
-        }
+            displayController.ShowSplashScreen();
 
-        async Task InitializeWifi()
-        { 
-            Console.WriteLine("Initialize WiFi...");
-
-            // connnect to the wifi network.
-            Console.WriteLine($"Connecting to WiFi Network {Secrets.WIFI_NAME}");
             var connectionResult = await Device.WiFiAdapter.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD);
-            if (connectionResult.ConnectionStatus != ConnectionStatus.Success) {
+            if (connectionResult.ConnectionStatus != ConnectionStatus.Success)
+            {
                 throw new Exception($"Cannot connect to network: {connectionResult.ConnectionStatus}");
             }
-            Console.WriteLine($"Connected. IP: {Device.WiFiAdapter.IpAddress}");
 
-            // create our maple web server
             mapleServer = new MapleServer(
                 Device.WiFiAdapter.IpAddress, 5417, true
             );
 
-            Console.WriteLine("Initialization complete.");
             onboardLed.SetColor(Color.Green);
         }
     }

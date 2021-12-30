@@ -1,5 +1,4 @@
 ﻿using Meadow.Foundation.Displays.Lcd;
-using System;
 
 namespace MeadowOnAir_Sign.HackKit
 {
@@ -24,7 +23,6 @@ namespace MeadowOnAir_Sign.HackKit
         {
             if (initialized) { return; }
 
-            Console.WriteLine("Initialize hardware...");
             display = new CharacterDisplay
             (
                 device: MeadowApp.Device,
@@ -38,8 +36,6 @@ namespace MeadowOnAir_Sign.HackKit
             );
 
             initialized = true;
-
-            Console.WriteLine("Initialization complete.");
         }
 
         public void ShowText(string text)
