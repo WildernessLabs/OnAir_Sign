@@ -356,3 +356,4 @@ MigrationBackup/
 **/.DS_Store
 Source/OnAir_Sign/OnAir_Sign.App/OnAir_Sign.App.Android/Resources/Resource.designer.cs
 Source/OnAir_Sign/OnAir_Sign.Client/OnAir_Sign.Client.Android/Resources/Resource.designer.cs
+Source/OnAir_Sign/MobileOnAir_Sign/MobileOnAir_Sign.Android/Resources/Resource.designer.cs
