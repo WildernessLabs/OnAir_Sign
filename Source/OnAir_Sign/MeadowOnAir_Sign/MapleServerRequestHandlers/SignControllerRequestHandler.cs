@@ -1,5 +1,5 @@
-﻿using Meadow.Foundation.Web.Maple.Server;
-using Meadow.Foundation.Web.Maple.Server.Routing;
+﻿using Meadow.Foundation.Web.Maple;
+using Meadow.Foundation.Web.Maple.Routing;
 
 namespace MeadowOnAir_Sign.MapleServerRequestHandlers
 {
@@ -8,7 +8,7 @@ namespace MeadowOnAir_Sign.MapleServerRequestHandlers
         [HttpPost("/signtext")]
         public IActionResult SignText()
         {
-            DisplayController.Current.ShowText(Body);
+            DisplayController.Instance.ShowText(Body);
             return new OkResult();
         }
     }

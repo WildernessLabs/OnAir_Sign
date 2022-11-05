@@ -2,31 +2,19 @@
 using Meadow.Devices;
 using Meadow.Foundation;
 using Meadow.Foundation.Leds;
-using Meadow.Foundation.Web.Maple.Server;
+using Meadow.Foundation.Web.Maple;
 using Meadow.Gateway.WiFi;
+using Meadow.Hardware;
 using System;
 using System.Threading.Tasks;
 
 namespace MeadowOnAir_Sign.HackKit
 {
-    public class MeadowApp : App<F7Micro, MeadowApp>
+    public class MeadowApp : App<F7FeatherV2>
     {
         MapleServer mapleServer;
-        DisplayController displayController;
 
-        public MeadowApp()
-        {
-            // initialize our hardware and system
-            Initialize().Wait();
-
-            // start our web server
-            mapleServer.Start();
-
-            // display a default message
-            displayController.ShowText("READY");
-        }
-
-        async Task Initialize()
+        public override async Task Initialize()
         {
             var onboardLed = new RgbPwmLed(
                 device: Device,
@@ -35,20 +23,26 @@ namespace MeadowOnAir_Sign.HackKit
                 bluePwmPin: Device.Pins.OnboardLedBlue);
             onboardLed.SetColor(Color.Red);
 
-            DisplayController.Current.Initialize();
-            displayController = DisplayController.Current;
+            var wifi = Device.NetworkAdapters.Primary<IWiFiNetworkAdapter>();
 
-            var connectionResult = await Device.WiFiAdapter.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD);
+            var connectionResult = await wifi.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD, TimeSpan.FromSeconds(45));
             if (connectionResult.ConnectionStatus != ConnectionStatus.Success)
             {
                 throw new Exception($"Cannot connect to network: {connectionResult.ConnectionStatus}");
             }
 
-            mapleServer = new MapleServer(
-                Device.WiFiAdapter.IpAddress, 5417, false
-            );
+            mapleServer = new MapleServer(wifi.IpAddress, 5417, true);
 
             onboardLed.SetColor(Color.Green);
+        }
+
+        public override Task Run()
+        {
+            mapleServer.Start();
+
+            DisplayController.Instance.ShowText("READY");
+
+            return base.Run();
         }
     }
 }

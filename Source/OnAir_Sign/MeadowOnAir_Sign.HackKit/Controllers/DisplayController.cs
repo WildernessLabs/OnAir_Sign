@@ -1,28 +1,25 @@
 ﻿using Meadow.Foundation.Displays.Lcd;
+using System;
 
 namespace MeadowOnAir_Sign.HackKit
 {
     public class DisplayController
     {
-        CharacterDisplay display;
+        private static readonly Lazy<DisplayController> instance =
+            new Lazy<DisplayController>(() => new DisplayController());
+        public static DisplayController Instance => instance.Value;
 
-        protected bool initialized = false;
+        CharacterDisplay display;
 
         public string Text { get; protected set; }
 
-        public static DisplayController Current { get; private set; }
-
-        private DisplayController() { }
-
-        static DisplayController()
+        private DisplayController() 
         {
-            Current = new DisplayController();
+            Initialize();
         }
 
         public void Initialize()
         {
-            if (initialized) { return; }
-
             display = new CharacterDisplay
             (
                 device: MeadowApp.Device,
@@ -34,8 +31,6 @@ namespace MeadowOnAir_Sign.HackKit
                 pinD7: MeadowApp.Device.Pins.D05,
                 rows: 4, columns: 20
             );
-
-            initialized = true;
         }
 
         public void ShowText(string text)
