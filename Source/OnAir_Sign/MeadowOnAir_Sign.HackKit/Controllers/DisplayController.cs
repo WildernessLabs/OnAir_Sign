@@ -33,11 +33,32 @@ namespace MeadowOnAir_Sign.HackKit
             );
         }
 
+        public void ShowSplashScreen()
+        {
+            display.WriteLine($"--------------------", 0);
+            display.WriteLine($" Meadow On-Air Sign ", 1);
+            display.WriteLine($"     Loading...     ", 2);
+            display.WriteLine($"--------------------", 3);
+        }
+
+        public void MapleScreen(string ipAddress)
+        {
+            display.WriteLine($"WIFI USING MAPLE", 0);
+            display.WriteLine($"IP: {ipAddress}", 1);
+            display.WriteLine($"--------------------", 2);
+        }
+
+        public void BluetoothScreen(string status)
+        {
+            display.WriteLine($"BLUETOOTH", 0);
+            display.WriteLine($"STATUS:{status}", 1);
+            display.WriteLine($"--------------------", 2);
+        }
+
         public void ShowText(string text)
         {
             Text = text;
-            display.ClearLines();
-            display.WriteLine(text, 0);
+            display.WriteLine(text, 3);
         }
     }
 }

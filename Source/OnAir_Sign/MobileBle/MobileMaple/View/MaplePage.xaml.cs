@@ -13,7 +13,7 @@ namespace MobileMaple.View
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            (BindingContext as MapleViewModel).CmdSearchServers.Execute(null);
+            (BindingContext as MapleViewModel).SearchServersCommand.Execute(null);
         }
     }
 }
