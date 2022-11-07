@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace MeadowOnAir_Sign.HackKit
 {
-    public class MeadowApp : App<F7FeatherV1>
+    public class MeadowApp : App<F7FeatherV2>
     {
         bool useWiFi = true;
 
         public override async Task Initialize()
         {
             var onboardLed = new RgbPwmLed(
-                device: Device,
-                redPwmPin: Device.Pins.OnboardLedRed,
-                greenPwmPin: Device.Pins.OnboardLedGreen,
-                bluePwmPin: Device.Pins.OnboardLedBlue);
+                Device,
+                Device.Pins.OnboardLedRed,
+                Device.Pins.OnboardLedGreen,
+                Device.Pins.OnboardLedBlue);
             onboardLed.SetColor(Color.Red);
 
             DisplayController.Instance.ShowSplashScreen();

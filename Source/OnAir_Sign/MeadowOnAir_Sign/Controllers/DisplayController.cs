@@ -39,14 +39,10 @@ namespace MeadowOnAir_Sign
 
         public void ShowSplashScreen()
         {
-            graphics.CurrentFont = new Font4x6();
-
             graphics.Clear();
             graphics.DrawRectangle(0, 0, graphics.Width, graphics.Height);
             graphics.DrawText(graphics.Width / 2, 2, "OnAir", alignment: TextAlignment.Center);
             graphics.Show();
-
-            graphics.CurrentFont = new Font4x8();
         }
 
         public void ShowTextStatic(string text)
