@@ -2,7 +2,7 @@
 using Meadow.Gateways.Bluetooth;
 using System;
 
-namespace MeadowOnAir_Sign.HackKit.Connectivity
+namespace MeadowOnAir_Sign.HackKit
 {
     public class BluetoothServer
     {
@@ -31,7 +31,7 @@ namespace MeadowOnAir_Sign.HackKit.Connectivity
 
         private void OnAirTextCharacteristicValueSet(ICharacteristic c, object data)
         {
-            
+            DisplayController.Instance.ShowText((string)data);
         }
 
         Definition GetDefinition()

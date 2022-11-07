@@ -5,7 +5,6 @@ using Meadow.Foundation.Leds;
 using Meadow.Foundation.Web.Maple;
 using Meadow.Gateway.WiFi;
 using Meadow.Hardware;
-using MeadowOnAir_Sign.HackKit.Connectivity;
 using System;
 using System.Threading.Tasks;
 
@@ -13,7 +12,7 @@ namespace MeadowOnAir_Sign.HackKit
 {
     public class MeadowApp : App<F7FeatherV1>
     {
-        bool useWiFi = false;
+        bool useWiFi = true;
 
         public override async Task Initialize()
         {
