@@ -37,7 +37,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <Picker TextColor="White" FontSize="Medium" BackgroundColor="Transparent"
+                            <Picker TextColor="White" FontSize="Medium" BackgroundColor="Transparent"  Margin="0,3,0,0"
                                 ItemsSource="{Binding HostList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedServer}"/>
                             <Label IsVisible="{Binding IsServerListEmpty}" Text="Pick a server" 
                                 FontSize="Medium" TextColor="White" VerticalOptions="Center" />
