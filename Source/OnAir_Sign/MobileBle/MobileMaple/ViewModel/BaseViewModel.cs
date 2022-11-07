@@ -12,6 +12,13 @@ namespace MobileMaple.ViewModel
             set { isBusy = value; OnPropertyChanged(nameof(IsBusy)); }
         }
 
+        string textSign;
+        public string TextSign
+        {
+            get => textSign;
+            set { textSign = value; OnPropertyChanged(nameof(TextSign)); }
+        }
+
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string name = null)

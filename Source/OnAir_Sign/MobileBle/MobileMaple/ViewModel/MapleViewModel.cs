@@ -38,13 +38,6 @@ namespace MobileMaple.ViewModel
             set { ipAddress = value; OnPropertyChanged(nameof(IpAddress)); }
         }
 
-        string textSign;
-        public string TextSign
-        {
-            get => textSign;
-            set { textSign = value; OnPropertyChanged(nameof(TextSign)); }
-        }
-
         ServerModel _selectedServer;
         public ServerModel SelectedServer
         {
@@ -67,7 +60,7 @@ namespace MobileMaple.ViewModel
         public MapleViewModel()
         {
             HostList = new ObservableCollection<ServerModel>();
-            HostList.Add(new ServerModel() { Name = "Meadow (192.168.1.84)", IpAddress = "192.168.1.84" });
+            //HostList.Add(new ServerModel() { Name = "Meadow (192.168.1.84)", IpAddress = "192.168.1.84" });
 
             ServerPort = 5417;
 
@@ -135,7 +128,7 @@ namespace MobileMaple.ViewModel
 
             try
             {
-                bool response = await client.PostAsync(SelectedServer.IpAddress, ServerPort, "SignText", TextSign);
+                bool response = await client.PostAsync(SelectedServer != null? SelectedServer.IpAddress : IpAddress, ServerPort, "SignText", TextSign);
 
                 if (!response)
                 {

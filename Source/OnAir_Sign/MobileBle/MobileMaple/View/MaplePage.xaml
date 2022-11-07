@@ -89,7 +89,7 @@
                             <StackLayout Spacing="10">
                                 <Label Text="Set text on sign:" TextColor="White" FontSize="Medium" />
 
-                                <Entry Text="{Binding TextSign}" Placeholder="Hello Meadow" TextColor="White" PlaceholderColor="White" FontSize="Medium" Keyboard="Chat"
+                                <Entry Text="{Binding TextSign}" Placeholder="Ex. Hello Meadow" TextColor="White" PlaceholderColor="#AAAAAA" FontSize="Medium" Keyboard="Chat"
                                     BackgroundColor="#10485E" HorizontalTextAlignment="Center" />
 
                                 <Grid>

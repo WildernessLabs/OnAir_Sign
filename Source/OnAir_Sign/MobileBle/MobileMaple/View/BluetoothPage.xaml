@@ -2,6 +2,7 @@
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converter="clr-namespace:MobileMaple.Converter"
     x:Class="MobileMaple.View.BluetoothPage"
     BackgroundColor="White"
     Title="Servo Controller">
@@ -29,17 +30,31 @@
                 </Grid.RowDefinitions>
 
                 <Frame Grid.Row="0" BackgroundColor="#23ABE3" BorderColor="Transparent" HasShadow="False" CornerRadius="5" Padding="10,0,0,0">
-                    <Grid ColumnDefinitions="*, Auto, 1, Auto" ColumnSpacing="0">
+                    <Grid ColumnDefinitions="*, 1, Auto" ColumnSpacing="0">
                         <Grid Grid.Column="0">
                             <Picker TextColor="White" FontSize="Medium" BackgroundColor="Transparent"
                                 ItemsSource="{Binding DeviceList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding DeviceSelected}"/>
-                            <!--<Label Text="Meadow Clima.Pro" 
-                                FontSize="Medium" TextColor="White" VerticalOptions="Center" />-->
                         </Grid>
 
-                        <Grid Grid.Column="1" WidthRequest="50" HeightRequest="50">
-                            <Button Command="{Binding CmdToggleConnection}" BackgroundColor="Transparent" CornerRadius="5" />
-                            <Image Margin="10" HorizontalOptions="Center" Source="icon_connected">
+                        <BoxView Grid.Column="1" Color="White" />
+
+                        <Grid Grid.Column="2" WidthRequest="50" HeightRequest="50" IsVisible="{Binding IsDeviceListEmpty}">
+                            <Button Command="{Binding SearchForDevicesCommand}" BackgroundColor="Transparent" CornerRadius="5" />
+                            <Image Source="img_search" Margin="10" InputTransparent="True" HorizontalOptions="Center" />
+                            <ActivityIndicator Color="White" BackgroundColor="#23ABE3" IsRunning="True" IsVisible="{Binding IsScanning}" Margin="7" />
+                        </Grid>
+
+                        <Grid Grid.Column="2" WidthRequest="50" HeightRequest="50">
+                            <Grid.Triggers>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsDeviceListEmpty}" Value="true">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsDeviceListEmpty}" Value="false">
+                                    <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                            </Grid.Triggers>
+                            <Button Command="{Binding ToggleConnectionCommand}" BackgroundColor="Transparent" CornerRadius="5" />
+                            <Image Margin="10" HorizontalOptions="Center" Source="img_ble_paired">
                                 <Image.Triggers>
                                     <DataTrigger TargetType="Image" Binding="{Binding IsDeviceListEmpty}" Value="True">
                                         <Setter Property="Opacity" Value="0.5" />
@@ -58,21 +73,14 @@
                                         <Setter Property="InputTransparent" Value="True" />
                                     </DataTrigger>
                                     <DataTrigger TargetType="Image" Binding="{Binding IsConnected}" Value="True">
-                                        <Setter Property="Source" Value="icon_connected" />
+                                        <Setter Property="Source" Value="img_ble_paired" />
                                     </DataTrigger>
                                     <DataTrigger TargetType="Image" Binding="{Binding IsConnected}" Value="False">
-                                        <Setter Property="Source" Value="icon_disconnected" />
+                                        <Setter Property="Source" Value="img_ble_pair" />
                                     </DataTrigger>
                                 </Image.Triggers>
                             </Image>
                             <ActivityIndicator Color="White" IsRunning="True" IsVisible="{Binding IsScanning}" Margin="7" />
-                        </Grid>
-
-                        <BoxView Grid.Column="2" Color="White" />
-
-                        <Grid Grid.Column="3" WidthRequest="50" HeightRequest="50">
-                            <Button Command="{Binding CmdSearchForDevices}" BackgroundColor="Transparent" CornerRadius="5" />
-                            <Image Source="icon_search.png" Margin="10" InputTransparent="True" HorizontalOptions="Center" />
                         </Grid>
                     </Grid>
                 </Frame>
@@ -83,12 +91,12 @@
                             <StackLayout Spacing="10">
                                 <Label Text="Set text on sign:" TextColor="White" FontSize="Medium" />
 
-                                <Entry Placeholder="Hello Meadow" TextColor="White" PlaceholderColor="White" FontSize="Medium" Keyboard="Chat"
+                                <Entry Text="{Binding TextSign}" Placeholder="Ex. Hello Meadow" TextColor="White" PlaceholderColor="#AAAAAA" FontSize="Medium" Keyboard="Chat"
                                     BackgroundColor="#10485E" HorizontalTextAlignment="Center" />
 
                                 <Grid>
                                     <Button Grid.Column="0" Text="Set Text" Style="{StaticResource ButtonNavStyle}"
-                                        Command="{Binding CmdSetOnboardLed}" CommandParameter="toggle"/>
+                                        Command="{Binding SetTextCommand}" />
                                 </Grid>
                             </StackLayout>
                         </Frame>

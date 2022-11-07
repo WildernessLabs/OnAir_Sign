@@ -1,4 +1,5 @@
-﻿using Plugin.BLE;
+﻿using CommonContracts.Bluetooth;
+using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
 using Plugin.BLE.Abstractions.Exceptions;
@@ -18,6 +19,7 @@ namespace MobileMaple.ViewModel
         IService service;
 
         ICharacteristic pairingCharacteristic;
+        ICharacteristic OnAirTextCharacteristic;
 
         public ObservableCollection<IDevice> DeviceList { get; set; }
 
@@ -49,18 +51,11 @@ namespace MobileMaple.ViewModel
             set { isDeviceListEmpty = value; OnPropertyChanged(nameof(IsDeviceListEmpty)); }
         }
 
-        public ICommand CmdToggleConnection { get; set; }
+        public ICommand ToggleConnectionCommand { get; set; }
 
-        public ICommand CmdSearchForDevices { get; set; }
+        public ICommand SearchForDevicesCommand { get; set; }
 
-        string ledStatus;
-        public string LedStatus
-        {
-            get => ledStatus;
-            set { ledStatus = value; OnPropertyChanged(nameof(LedStatus)); }
-        }
-
-        public ICommand CmdSetOnboardLed { get; private set; }
+        public ICommand SetTextCommand { get; private set; }
 
         public BluetoothViewModel()
         {
@@ -73,11 +68,11 @@ namespace MobileMaple.ViewModel
             adapter.DeviceDiscovered += AdapterDeviceDiscovered;
             adapter.DeviceDisconnected += AdapterDeviceDisconnected;
 
-            CmdToggleConnection = new Command(async () => await ToggleConnection());
+            ToggleConnectionCommand = new Command(async () => await ToggleConnection());
 
-            CmdSearchForDevices = new Command(async () => await SearchForDevices());
+            SearchForDevicesCommand = new Command(async () => await SearchForDevices());
 
-            CmdSetOnboardLed = new Command(async (obj) => await SetOnboardLed(obj as string));
+            SetTextCommand = new Command(async () => await SetOnAirSignText());
         }
 
         void AdapterDeviceDisconnected(object sender, DeviceEventArgs e)
@@ -101,12 +96,8 @@ namespace MobileMaple.ViewModel
                 }
             }
 
-            //pairingCharacteristic = await service.GetCharacteristicAsync(Guid.Parse(CharacteristicsConstants.PAIRING));
-            //ledToggleCharacteristic = await service.GetCharacteristicAsync(Guid.Parse(CharacteristicsConstants.LED_TOGGLE));
-            //ledBlinkCharacteristic = await service.GetCharacteristicAsync(Guid.Parse(CharacteristicsConstants.LED_BLINK));
-            //ledPulseCharacteristic = await service.GetCharacteristicAsync(Guid.Parse(CharacteristicsConstants.LED_PULSE));
-            //bme688DataCharacteristic = await service.GetCharacteristicAsync(Guid.Parse(CharacteristicsConstants.BME688_DATA));
-            //bh1750DataCharacteristic = await service.GetCharacteristicAsync(Guid.Parse(CharacteristicsConstants.BH1750_DATA));
+            pairingCharacteristic = await service.GetCharacteristicAsync(Guid.Parse(CharacteristicsConstants.PAIRING));
+            OnAirTextCharacteristic = await service.GetCharacteristicAsync(Guid.Parse(CharacteristicsConstants.ON_AIR_SIGN_TEXT));
 
             SetPairingStatus();
         }
@@ -185,36 +176,19 @@ namespace MobileMaple.ViewModel
             }
         }
 
-        async Task SetOnboardLed(string command)
-        {
-            //byte[] array = new byte[1];
-
-            //switch (command)
-            //{
-            //    case "toggle":
-            //        array[0] = 1;
-            //        await ledToggleCharacteristic.WriteAsync(array);
-            //        LedStatus = "Toggled";
-            //        break;
-
-            //    case "blink":
-            //        await ledBlinkCharacteristic.WriteAsync(array);
-            //        LedStatus = "Blinking";
-            //        break;
-
-            //    case "pulse":
-            //        await ledPulseCharacteristic.WriteAsync(array);
-            //        LedStatus = "Pulsing";
-            //        break;
-            //}
-        }
-
         async Task SetPairingStatus()
         {
             byte[] array = new byte[1];
             array[0] = IsConnected ? (byte)1 : (byte)0;
 
             await pairingCharacteristic.WriteAsync(array);
+        }
+
+        async Task SetOnAirSignText() 
+        {
+            var array = System.Text.Encoding.ASCII.GetBytes(TextSign);
+
+            await OnAirTextCharacteristic.WriteAsync(array);
         }
 
         protected int UuidToUshort(string uuid)

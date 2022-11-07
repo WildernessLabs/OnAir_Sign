@@ -10,10 +10,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>MobileMaple</ApplicationTitle>
+		<ApplicationTitle>On Air Sign</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.MobileMaple</ApplicationId>
+		<ApplicationId>com.companyname.OnAirSign</ApplicationId>
 		<ApplicationIdGuid>2750A062-72A3-4E67-A82F-AAC0A348C7B4</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -55,13 +55,5 @@
         <PackageReference Include="Plugin.BLE" Version="2.1.2" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Compile Update="View\BluetoothPage.xaml.cs">
-	    <DependentUpon>BluetoothPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="View\MaplePage.xaml.cs">
-	    <DependentUpon>MaplePage.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
+	<Import Project="..\..\CommonContracts\CommonContracts.projitems" Label="Shared" />
 </Project>

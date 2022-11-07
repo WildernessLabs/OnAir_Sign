@@ -51,7 +51,7 @@ namespace MeadowOnAir_Sign.HackKit
         public void BluetoothScreen(string status)
         {
             display.WriteLine($"BLUETOOTH", 0);
-            display.WriteLine($"STATUS:{status}", 1);
+            display.WriteLine($"Status:{status}", 1);
             display.WriteLine($"--------------------", 2);
         }
 

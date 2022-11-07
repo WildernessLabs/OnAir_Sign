@@ -15,7 +15,7 @@ namespace MobileMaple.View
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            vm.CmdSearchForDevices.Execute(null);
+            vm.SearchForDevicesCommand.Execute(null);
         }
 
         protected override void OnDisappearing()
@@ -24,7 +24,7 @@ namespace MobileMaple.View
 
             if (vm.IsConnected)
             {
-                vm.CmdToggleConnection.Execute(null);
+                vm.ToggleConnectionCommand.Execute(null);
             }
         }
     }

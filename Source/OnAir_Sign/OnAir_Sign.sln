@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir_Sign.HackKit", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileMaple", "MobileBle\MobileMaple\MobileMaple.csproj", "{AA7CD7AA-98EE-4766-BEDE-B9CC77C489DC}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonContracts", "CommonContracts\CommonContracts.shproj", "{C89F28CE-0BA6-49B8-9C9A-244AE26339DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,5 +139,11 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB66823C-7176-4CF3-BEBD-2413391D7A4B}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CommonContracts\CommonContracts.projitems*{4ac390f8-5c8b-4cdb-8678-675c5f1c2e0c}*SharedItemsImports = 5
+		CommonContracts\CommonContracts.projitems*{aa7cd7aa-98ee-4766-bede-b9cc77c489dc}*SharedItemsImports = 5
+		CommonContracts\CommonContracts.projitems*{c89f28ce-0ba6-49b8-9c9a-244ae26339dd}*SharedItemsImports = 13
+		CommonContracts\CommonContracts.projitems*{d474c7ad-17d9-49bd-be1f-af5cb8ce0b1a}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

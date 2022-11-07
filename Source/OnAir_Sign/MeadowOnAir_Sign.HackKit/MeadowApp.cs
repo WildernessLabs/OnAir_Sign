@@ -5,6 +5,7 @@ using Meadow.Foundation.Leds;
 using Meadow.Foundation.Web.Maple;
 using Meadow.Gateway.WiFi;
 using Meadow.Hardware;
+using MeadowOnAir_Sign.HackKit.Connectivity;
 using System;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace MeadowOnAir_Sign.HackKit
 {
     public class MeadowApp : App<F7FeatherV1>
     {
-        bool useWiFi = true;
+        bool useWiFi = false;
 
         public override async Task Initialize()
         {
@@ -41,11 +42,13 @@ namespace MeadowOnAir_Sign.HackKit
                 DisplayController.Instance.MapleScreen(wifi.IpAddress.ToString());
             }
             else 
-            { 
-            
+            {
+                BluetoothServer.Instance.Initialize();
+
+                DisplayController.Instance.BluetoothScreen(" Not Paired");
             }
 
-            DisplayController.Instance.ShowText("READY");
+            DisplayController.Instance.ShowText(string.Empty);
 
             onboardLed.SetColor(Color.Green);
         }
