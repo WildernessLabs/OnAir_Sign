@@ -1,4 +1,4 @@
-﻿namespace MobileMaple
+﻿namespace MobileOnAir_Sign
 {
     public partial class App : Application
     {

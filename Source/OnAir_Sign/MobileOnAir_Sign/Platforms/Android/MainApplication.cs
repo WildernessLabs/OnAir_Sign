@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace MobileMaple;
+namespace MobileOnAir_Sign;
 
 [Application]
 public class MainApplication : MauiApplication

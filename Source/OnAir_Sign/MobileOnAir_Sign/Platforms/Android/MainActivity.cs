@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 
-namespace MobileMaple
+namespace MobileOnAir_Sign
 {
     [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation |

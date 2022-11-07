@@ -1,4 +1,4 @@
-﻿namespace MobileMaple.View
+﻿namespace MobileOnAir_Sign.View
 {
     public partial class MainPage : ContentPage
     {

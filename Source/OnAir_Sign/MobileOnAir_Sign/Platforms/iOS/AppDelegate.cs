@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace MobileMaple;
+namespace MobileOnAir_Sign;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

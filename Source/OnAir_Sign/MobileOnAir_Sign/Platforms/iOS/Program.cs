@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace MobileMaple;
+namespace MobileOnAir_Sign;
 
 public class Program
 {

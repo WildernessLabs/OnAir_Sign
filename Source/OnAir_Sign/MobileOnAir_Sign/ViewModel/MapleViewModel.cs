@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel.Design;
 using System.Windows.Input;
 
-namespace MobileMaple.ViewModel
+namespace MobileOnAir_Sign.ViewModel
 {
     public class MapleViewModel : BaseViewModel
     {

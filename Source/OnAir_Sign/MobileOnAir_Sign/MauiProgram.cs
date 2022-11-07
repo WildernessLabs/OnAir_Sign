@@ -1,4 +1,4 @@
-﻿namespace MobileMaple;
+﻿namespace MobileOnAir_Sign;
 
 public static class MauiProgram
 {

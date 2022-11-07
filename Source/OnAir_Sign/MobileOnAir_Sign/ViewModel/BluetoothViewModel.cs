@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace MobileMaple.ViewModel
+namespace MobileOnAir_Sign.ViewModel
 {
     public class BluetoothViewModel : BaseViewModel
     {

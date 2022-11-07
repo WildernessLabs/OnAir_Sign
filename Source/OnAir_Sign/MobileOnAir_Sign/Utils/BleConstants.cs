@@ -1,4 +1,4 @@
-﻿namespace MobileMaple.Utils
+﻿namespace MobileOnAir_Sign.Utils
 {
     public static class CharacteristicsConstants
     {

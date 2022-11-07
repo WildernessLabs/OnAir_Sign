@@ -1,6 +1,6 @@
-﻿using MobileMaple.ViewModel;
+﻿using MobileOnAir_Sign.ViewModel;
 
-namespace MobileMaple.View
+namespace MobileOnAir_Sign.View
 {
     public partial class MaplePage : ContentPage
     {

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir_Sign", "MeadowO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir_Sign.HackKit", "MeadowOnAir_Sign.HackKit\MeadowOnAir_Sign.HackKit.csproj", "{4AC390F8-5C8B-4CDB-8678-675C5F1C2E0C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileMaple", "MobileBle\MobileMaple\MobileMaple.csproj", "{AA7CD7AA-98EE-4766-BEDE-B9CC77C489DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileOnAir_Sign", "MobileOnAir_Sign\MobileOnAir_Sign.csproj", "{AA7CD7AA-98EE-4766-BEDE-B9CC77C489DC}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommonContracts", "CommonContracts\CommonContracts.shproj", "{C89F28CE-0BA6-49B8-9C9A-244AE26339DD}"
 EndProject
