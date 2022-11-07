@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MobileOnAir_Sign.View.MainPage"
     BackgroundColor="White"
-    Title="Maple Devices">
+    Title="On Air Sign Companion App">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -22,9 +22,12 @@
     <ContentPage.Content>
         <StackLayout Margin="20">
             <Frame Padding="20" CornerRadius="10" BackgroundColor="#23abe3" BorderColor="Transparent">
-                <StackLayout Spacing="15">
-                    <Image Source="img_project_lab" />
-                    <Button Text="WIFI using Maple" Clicked="BtnMapleClicked" Style="{StaticResource ButtonNavStyle}" />
+                <StackLayout Spacing="10">
+                    <Label Text="Using a Max7219 LED display" TextColor="White" FontSize="Medium" />
+                    <Image Source="img_on_air" />
+                    <Label Text="Using a LCD Character display" TextColor="White" FontSize="Medium" />
+                    <Image Source="img_on_air_hackkit" />
+                    <Button Text="WiFi using Maple" Clicked="BtnMapleClicked" Style="{StaticResource ButtonNavStyle}" />
                     <Button Text="Bluetooth" Clicked="BtnBluetoothClicked" Style="{StaticResource ButtonNavStyle}" />
                 </StackLayout>
             </Frame>
