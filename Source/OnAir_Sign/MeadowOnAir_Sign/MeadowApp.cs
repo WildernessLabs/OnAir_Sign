@@ -12,7 +12,7 @@ namespace MeadowOnAir_Sign
 {
     public class MeadowApp : App<F7FeatherV2>
     {
-        MapleServer mapleServer;
+        bool useWiFi = true;
 
         public override async Task Initialize()
         {
@@ -25,26 +25,29 @@ namespace MeadowOnAir_Sign
 
             DisplayController.Instance.ShowSplashScreen();
 
-            var wifi = Device.NetworkAdapters.Primary<IWiFiNetworkAdapter>();
-
-            var connectionResult = await wifi.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD, TimeSpan.FromSeconds(45));
-            if (connectionResult.ConnectionStatus != ConnectionStatus.Success)
+            if (useWiFi)
             {
-                throw new Exception($"Cannot connect to network: {connectionResult.ConnectionStatus}");
+                var wifi = Device.NetworkAdapters.Primary<IWiFiNetworkAdapter>();
+
+                var connectionResult = await wifi.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD, TimeSpan.FromSeconds(45));
+                if (connectionResult.ConnectionStatus != ConnectionStatus.Success)
+                {
+                    throw new Exception($"Cannot connect to network: {connectionResult.ConnectionStatus}");
+                }
+
+                var mapleServer = new MapleServer(wifi.IpAddress, 5417, true);
+                mapleServer.Start();
+
+                DisplayController.Instance.ShowText(wifi.IpAddress.ToString());
+            }
+            else
+            {
+                BluetoothServer.Instance.Initialize();
+
+                DisplayController.Instance.ShowText("BLE READY!!!");
             }
 
-            mapleServer = new MapleServer(wifi.IpAddress, 5417, true);
-
             onboardLed.SetColor(Color.Green);
-        }
-
-        public override Task Run()
-        {
-            mapleServer.Start();
-
-            DisplayController.Instance.ShowText("READY");
-
-            return base.Run();
         }
     }
 }
