@@ -3,7 +3,6 @@ using Meadow.Devices;
 using Meadow.Foundation;
 using Meadow.Foundation.Leds;
 using Meadow.Foundation.Web.Maple;
-using Meadow.Gateway.WiFi;
 using Meadow.Hardware;
 using System;
 using System.Threading.Tasks;
@@ -28,17 +27,8 @@ namespace MeadowOnAir_Sign
             if (useWiFi)
             {
                 var wifi = Device.NetworkAdapters.Primary<IWiFiNetworkAdapter>();
-
-                var connectionResult = await wifi.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD, TimeSpan.FromSeconds(45));
-                if (connectionResult.ConnectionStatus != ConnectionStatus.Success)
-                {
-                    throw new Exception($"Cannot connect to network: {connectionResult.ConnectionStatus}");
-                }
-
-                var mapleServer = new MapleServer(wifi.IpAddress, 5417, true);
-                mapleServer.Start();
-
-                DisplayController.Instance.ShowText(wifi.IpAddress.ToString());
+                wifi.NetworkConnected += NetworkConnected;
+                await wifi.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD, TimeSpan.FromSeconds(45));
             }
             else
             {
@@ -48,6 +38,14 @@ namespace MeadowOnAir_Sign
             }
 
             onboardLed.SetColor(Color.Green);
+        }
+
+        private void NetworkConnected(INetworkAdapter sender, NetworkConnectionEventArgs args)
+        {
+            var mapleServer = new MapleServer(sender.IpAddress, 5417, true);
+            mapleServer.Start();
+
+            DisplayController.Instance.ShowText(sender.IpAddress.ToString());
         }
     }
 }
