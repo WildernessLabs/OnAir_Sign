@@ -41,7 +41,7 @@ namespace MeadowOnAir_Sign
         {
             graphics.Clear();
             graphics.DrawRectangle(0, 0, graphics.Width, graphics.Height);
-            graphics.DrawText(graphics.Width / 2, 2, "OnAir", alignment: TextAlignment.Center);
+            graphics.DrawText(graphics.Width / 2, 2, "OnAir", alignmentH: HorizontalAlignment.Center);
             graphics.Show();
         }
 

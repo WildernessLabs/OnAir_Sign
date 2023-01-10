@@ -1,7 +1,6 @@
-﻿using Meadow.Foundation.Web.Maple.Client;
+﻿using Meadow.Foundation.Web.Maple;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel.Design;
 using System.Windows.Input;
 
 namespace MobileOnAir_Sign.ViewModel

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CommonContracts.Bluetooth
+﻿namespace CommonContracts.Bluetooth
 {
     public static class CharacteristicsConstants
     {
