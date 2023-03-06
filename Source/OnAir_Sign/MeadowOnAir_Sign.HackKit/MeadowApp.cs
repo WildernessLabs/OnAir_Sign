@@ -16,7 +16,6 @@ namespace MeadowOnAir_Sign.HackKit
         public override async Task Initialize()
         {
             var onboardLed = new RgbPwmLed(
-                Device,
                 Device.Pins.OnboardLedRed,
                 Device.Pins.OnboardLedGreen,
                 Device.Pins.OnboardLedBlue);
