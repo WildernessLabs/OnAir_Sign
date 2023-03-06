@@ -23,8 +23,7 @@ namespace MeadowOnAir_Sign
         private void Initialize()
         {
             var ledDisplay = new Max7219(
-                MeadowApp.Device, 
-                MeadowApp.Device.CreateSpiBus(),
+                MeadowApp.Device.CreateSpiBus(Max7219.DefaultSpiBusSpeed),
                 MeadowApp.Device.Pins.D00, 
                 deviceCount: 4,
                 maxMode: Max7219.Max7219Mode.Display);

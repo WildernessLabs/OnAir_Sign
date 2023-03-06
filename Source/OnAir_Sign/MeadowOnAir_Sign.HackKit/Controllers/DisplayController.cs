@@ -22,7 +22,6 @@ namespace MeadowOnAir_Sign.HackKit
         {
             display = new CharacterDisplay
             (
-                device: MeadowApp.Device,
                 pinRS: MeadowApp.Device.Pins.D10,
                 pinE: MeadowApp.Device.Pins.D09,
                 pinD4: MeadowApp.Device.Pins.D08,
