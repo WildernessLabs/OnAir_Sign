@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading;
-using Meadow.Foundation.Displays;
+﻿using Meadow.Foundation.Displays;
 using Meadow.Foundation.Graphics;
+using System;
+using System.Threading;
 
 namespace MeadowOnAir_Sign
 {
@@ -15,7 +15,7 @@ namespace MeadowOnAir_Sign
 
         public string Text { get; protected set; }
 
-        private DisplayController() 
+        private DisplayController()
         {
             Initialize();
         }
@@ -23,15 +23,15 @@ namespace MeadowOnAir_Sign
         private void Initialize()
         {
             var ledDisplay = new Max7219(
-                MeadowApp.Device.CreateSpiBus(Max7219.DefaultSpiBusSpeed),
-                MeadowApp.Device.Pins.D00, 
+                MeadowApp.Device.CreateSpiBus(),
+                MeadowApp.Device.Pins.D00,
                 deviceCount: 4,
                 maxMode: Max7219.Max7219Mode.Display);
 
-            graphics = new MicroGraphics(ledDisplay) 
+            graphics = new MicroGraphics(ledDisplay)
             {
                 IgnoreOutOfBoundsPixels = true,
-                Rotation = RotationType._90Degrees,
+                Rotation = Meadow.Peripherals.Displays.RotationType._90Degrees,
                 CurrentFont = new Font4x8()
             };
         }
@@ -56,7 +56,7 @@ namespace MeadowOnAir_Sign
         {
             int textLenInPixels = graphics.MeasureText(text).Width;
 
-            if(textLenInPixels < graphics.Width)
+            if (textLenInPixels < graphics.Width)
             {
                 ShowTextStatic(text);
                 return;
