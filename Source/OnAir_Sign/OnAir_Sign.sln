@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Maple.Server", "..\..\.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Maple.Client", "..\..\..\Maple\Source\Web.Maple.Client\Web.Maple.Client.csproj", "{FCFB3BC1-7EF3-47E1-8AB6-16B83E005C7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeadowOnAir.Desktop", "MeadowOnAir.Desktop\MeadowOnAir.Desktop.csproj", "{F06630E0-63AD-41C7-A06D-9F6E619E9105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir.Desktop", "MeadowOnAir.Desktop\MeadowOnAir.Desktop.csproj", "{F06630E0-63AD-41C7-A06D-9F6E619E9105}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meadow.Desktop", "..\..\..\Meadow.Core\source\implementations\desktop\Meadow.Desktop\Meadow.Desktop.csproj", "{D74BCDDD-FFC0-4925-8E39-1D4ADBE3EF00}"
 EndProject
@@ -41,6 +41,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Displays.Silk", "..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.Silk\Driver\Displays.Silk.csproj", "{2175CF85-2D8B-4747-A5CC-71B1F8A6F7B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphics.MicroLayout", "..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Graphics.MicroLayout\Driver\Graphics.MicroLayout.csproj", "{788A1DD7-FB39-4761-8C22-942FACBDF01B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphics.MicroGraphics", "..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Graphics.MicroGraphics\Driver\Graphics.MicroGraphics.csproj", "{E45A113D-2100-40A0-88C7-C5604F7AB45A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -524,6 +526,30 @@ Global
 		{788A1DD7-FB39-4761-8C22-942FACBDF01B}.Release|x64.Build.0 = Release|Any CPU
 		{788A1DD7-FB39-4761-8C22-942FACBDF01B}.Release|x86.ActiveCfg = Release|Any CPU
 		{788A1DD7-FB39-4761-8C22-942FACBDF01B}.Release|x86.Build.0 = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|x64.Build.0 = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|ARM.Build.0 = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|iPhone.Build.0 = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|x64.ActiveCfg = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|x64.Build.0 = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -541,6 +567,7 @@ Global
 		{534BFDB6-EC9C-4DA7-8C46-5B7A2A4C072A} = {21145AD2-2A59-4907-8A34-F65123F2E7DC}
 		{2175CF85-2D8B-4747-A5CC-71B1F8A6F7B9} = {21145AD2-2A59-4907-8A34-F65123F2E7DC}
 		{788A1DD7-FB39-4761-8C22-942FACBDF01B} = {21145AD2-2A59-4907-8A34-F65123F2E7DC}
+		{E45A113D-2100-40A0-88C7-C5604F7AB45A} = {21145AD2-2A59-4907-8A34-F65123F2E7DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB66823C-7176-4CF3-BEBD-2413391D7A4B}

@@ -1,50 +1,28 @@
 ﻿using Meadow;
 using Meadow.Devices;
-using Meadow.Foundation;
-using Meadow.Foundation.Leds;
-using Meadow.Foundation.Web.Maple;
+using Meadow.Foundation.Displays;
 using Meadow.Hardware;
-using System;
+using MeadowOnAir_Sign.Controllers;
 using System.Threading.Tasks;
 
-namespace MeadowOnAir_Sign
+namespace MeadowOnAir_Sign;
+
+public class MeadowApp : App<F7FeatherV2>
 {
-    public class MeadowApp : App<F7FeatherV2>
+    public override async Task Initialize()
     {
-        bool useWiFi = true;
+        Resolver.Log.Info("Initialize...");
 
-        public override async Task Initialize()
-        {
-            var onboardLed = new RgbPwmLed(
-                Device.Pins.OnboardLedRed,
-                Device.Pins.OnboardLedGreen,
-                Device.Pins.OnboardLedBlue);
-            onboardLed.SetColor(Color.Red);
+        var wifi = Device.NetworkAdapters.Primary<IWiFiNetworkAdapter>();
+        var ble = Device.BluetoothAdapter;
 
-            DisplayController.Instance.ShowSplashScreen();
+        var ledDisplay = new Max7219(
+            Device.CreateSpiBus(),
+            Device.Pins.D00,
+            deviceCount: 4,
+            maxMode: Max7219.Max7219Mode.Display);
 
-            if (useWiFi)
-            {
-                var wifi = Device.NetworkAdapters.Primary<IWiFiNetworkAdapter>();
-                wifi.NetworkConnected += NetworkConnected;
-                await wifi.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD, TimeSpan.FromSeconds(45));
-            }
-            else
-            {
-                BluetoothServer.Instance.Initialize();
-
-                DisplayController.Instance.ShowText("BLE READY!!!");
-            }
-
-            onboardLed.SetColor(Color.Green);
-        }
-
-        private void NetworkConnected(INetworkAdapter sender, NetworkConnectionEventArgs args)
-        {
-            var mapleServer = new MapleServer(sender.IpAddress, 5417, true);
-            mapleServer.Start();
-
-            DisplayController.Instance.ShowText(sender.IpAddress.ToString());
-        }
+        var mainController = new MainController(ledDisplay, wifi, ble);
+        await mainController.Initialize();
     }
 }
