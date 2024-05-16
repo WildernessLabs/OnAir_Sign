@@ -3,7 +3,7 @@ using Meadow.Foundation.Displays;
 using MeadowOnAir_Sign.Controllers;
 using System.Threading.Tasks;
 
-namespace MeadowOnAir.Desktop;
+namespace MeadowOnAir_Sign.Desktop;
 
 public class MeadowApp : App<Meadow.Desktop>
 {

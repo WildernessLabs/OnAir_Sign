@@ -1,52 +1,35 @@
 ﻿using Meadow;
 using Meadow.Devices;
-using Meadow.Foundation;
-using Meadow.Foundation.Leds;
-using Meadow.Foundation.Web.Maple;
+using Meadow.Foundation.Displays.Lcd;
 using Meadow.Hardware;
-using System;
+using MeadowOnAir_Sign.HackKit.Controllers;
 using System.Threading.Tasks;
 
-namespace MeadowOnAir_Sign.HackKit
+namespace MeadowOnAir_Sign.HackKit;
+
+public class MeadowApp : App<F7FeatherV2>
 {
-    public class MeadowApp : App<F7FeatherV2>
+    bool useWiFi = true;
+
+    public override async Task Initialize()
     {
-        bool useWiFi = true;
+        Resolver.Log.Info("Initialize...");
 
-        public override async Task Initialize()
-        {
-            var onboardLed = new RgbPwmLed(
-                Device.Pins.OnboardLedRed,
-                Device.Pins.OnboardLedGreen,
-                Device.Pins.OnboardLedBlue);
-            onboardLed.SetColor(Color.Red);
+        var wifi = Device.NetworkAdapters.Primary<IWiFiNetworkAdapter>();
+        var ble = Device.BluetoothAdapter;
 
-            DisplayController.Instance.ShowSplashScreen();
+        var display = new CharacterDisplay
+            (
+                pinRS: Device.Pins.D10,
+                pinE: Device.Pins.D09,
+                pinD4: Device.Pins.D08,
+                pinD5: Device.Pins.D07,
+                pinD6: Device.Pins.D06,
+                pinD7: Device.Pins.D05,
+                rows: 4, columns: 20
+            );
 
-            if (useWiFi)
-            {
-                var wifi = Device.NetworkAdapters.Primary<IWiFiNetworkAdapter>();
-                wifi.NetworkConnected += NetworkConnected;
-                await wifi.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD, TimeSpan.FromSeconds(45));
-            }
-            else 
-            {
-                BluetoothServer.Instance.Initialize();
-
-                DisplayController.Instance.BluetoothScreen(" Not Paired");
-            }
-
-            DisplayController.Instance.ShowText(string.Empty);
-
-            onboardLed.SetColor(Color.Green);
-        }
-
-        private void NetworkConnected(INetworkAdapter sender, NetworkConnectionEventArgs args)
-        {
-            var mapleServer = new MapleServer(sender.IpAddress, 5417, true);
-            mapleServer.Start();
-
-            DisplayController.Instance.MapleScreen(sender.IpAddress.ToString());
-        }
+        var mainController = new MainController(display, wifi, ble);
+        await mainController.Initialize();
     }
 }

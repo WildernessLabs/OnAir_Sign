@@ -58,6 +58,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meadow.Core", "..\..\..\Mea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.MicroJson", "..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Serialization.MicroJson\Driver\Serialization.MicroJson.csproj", "{5907973C-4A98-4A79-A861-9DFB2E667A48}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Additional Samples", "Additional Samples", "{897ACA5E-D5AC-4473-964C-B2DCD1E5BE6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -737,6 +739,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{4AC390F8-5C8B-4CDB-8678-675C5F1C2E0C} = {897ACA5E-D5AC-4473-964C-B2DCD1E5BE6F}
 		{ED3345A8-26E0-4AED-88B9-CBB2FA9F54F7} = {21145AD2-2A59-4907-8A34-F65123F2E7DC}
 		{94EB1643-D83C-4BFE-BCBC-E6927ACBD37E} = {21145AD2-2A59-4907-8A34-F65123F2E7DC}
 		{F1F7A980-E9D6-4EB2-A88B-4E82AB97CD37} = {21145AD2-2A59-4907-8A34-F65123F2E7DC}

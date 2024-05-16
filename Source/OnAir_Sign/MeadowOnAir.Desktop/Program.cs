@@ -1,7 +1,7 @@
 ﻿using Meadow;
 using System.Threading.Tasks;
 
-namespace MeadowOnAir.Desktop;
+namespace MeadowOnAir_Sign.Desktop;
 
 public class Program
 {
