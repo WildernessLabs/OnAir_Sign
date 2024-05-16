@@ -2,7 +2,7 @@
 using Meadow.Foundation.Web.Maple;
 using Meadow.Foundation.Web.Maple.Routing;
 
-namespace MeadowOnAir_Sign;
+namespace MeadowOnAir_Sign.Core;
 
 public class MapleRequestHandler : RequestHandlerBase
 {

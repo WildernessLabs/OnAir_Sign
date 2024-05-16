@@ -1,7 +1,7 @@
 ﻿using Meadow;
 using System;
 
-namespace MeadowOnAir_Sign;
+namespace MeadowOnAir_Sign.Core;
 
 public class CommandController
 {

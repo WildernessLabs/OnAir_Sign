@@ -1,4 +1,4 @@
-﻿namespace MeadowOnAir_Sign;
+﻿namespace MeadowOnAir_Sign.Core;
 
 public enum ConnectionType
 {

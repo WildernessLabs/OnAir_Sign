@@ -5,7 +5,7 @@ using Meadow.Hardware;
 using MeadowOnAir_Sign.Controllers;
 using System.Threading.Tasks;
 
-namespace MeadowOnAir_Sign;
+namespace MeadowOnAir_Sign.Core;
 
 public class MeadowApp : App<F7FeatherV2>
 {
