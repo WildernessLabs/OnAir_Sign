@@ -8,6 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\Meadow.Core\source\implementations\desktop\Meadow.Desktop\Meadow.Desktop.csproj" />
-      <ProjectReference Include="..\MeadowOnAir_Sign\MeadowOnAir_Sign.csproj" />
+      <ProjectReference Include="..\MeadowOnAir_Sign\MeadowOnAir_Sign.Core.csproj" />
     </ItemGroup>
 </Project>

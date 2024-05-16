@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir_Sign", "MeadowOnAir_Sign\MeadowOnAir_Sign.csproj", "{D474C7AD-17D9-49BD-BE1F-AF5CB8CE0B1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir_Sign.Core", "MeadowOnAir_Sign\MeadowOnAir_Sign.Core.csproj", "{D474C7AD-17D9-49BD-BE1F-AF5CB8CE0B1A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir_Sign.HackKit", "MeadowOnAir_Sign.HackKit\MeadowOnAir_Sign.HackKit.csproj", "{4AC390F8-5C8B-4CDB-8678-675C5F1C2E0C}"
 EndProject
@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Maple.Server", "..\..\.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Maple.Client", "..\..\..\Maple\Source\Web.Maple.Client\Web.Maple.Client.csproj", "{FCFB3BC1-7EF3-47E1-8AB6-16B83E005C7B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir.Desktop", "MeadowOnAir.Desktop\MeadowOnAir.Desktop.csproj", "{F06630E0-63AD-41C7-A06D-9F6E619E9105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeadowOnAir_Sign.Desktop", "MeadowOnAir.Desktop\MeadowOnAir_Sign.Desktop.csproj", "{F06630E0-63AD-41C7-A06D-9F6E619E9105}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meadow.Desktop", "..\..\..\Meadow.Core\source\implementations\desktop\Meadow.Desktop\Meadow.Desktop.csproj", "{D74BCDDD-FFC0-4925-8E39-1D4ADBE3EF00}"
 EndProject
@@ -59,6 +59,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.MicroJson", "..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Serialization.MicroJson\Driver\Serialization.MicroJson.csproj", "{5907973C-4A98-4A79-A861-9DFB2E667A48}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Additional Samples", "Additional Samples", "{897ACA5E-D5AC-4473-964C-B2DCD1E5BE6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeadowOnAir_Sign.Max7219_", "MeadowOnAir_Sign.Max7219_\MeadowOnAir_Sign.Max7219_.csproj", "{A10EEC13-9F03-48FF-85E9-B30E5684603B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -734,6 +736,30 @@ Global
 		{5907973C-4A98-4A79-A861-9DFB2E667A48}.Release|x64.Build.0 = Release|Any CPU
 		{5907973C-4A98-4A79-A861-9DFB2E667A48}.Release|x86.ActiveCfg = Release|Any CPU
 		{5907973C-4A98-4A79-A861-9DFB2E667A48}.Release|x86.Build.0 = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|x64.Build.0 = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Debug|x86.Build.0 = Debug|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|ARM.Build.0 = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|iPhone.Build.0 = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|x64.ActiveCfg = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|x64.Build.0 = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|x86.ActiveCfg = Release|Any CPU
+		{A10EEC13-9F03-48FF-85E9-B30E5684603B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
