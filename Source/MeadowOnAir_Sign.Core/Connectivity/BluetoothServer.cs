@@ -2,7 +2,7 @@
 using Meadow;
 using Meadow.Gateways.Bluetooth;
 
-namespace MeadowOnAir_Sign.Core;
+namespace MeadowOnAir_Sign.Core.Connectivity;
 
 public class BluetoothServer
 {

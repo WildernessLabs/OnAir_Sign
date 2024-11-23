@@ -2,7 +2,7 @@
 using Meadow.Devices;
 using Meadow.Foundation.Displays;
 using Meadow.Hardware;
-using MeadowOnAir_Sign.Controllers;
+using MeadowOnAir_Sign.Core.Controllers;
 using System.Threading.Tasks;
 
 namespace MeadowOnAir_Sign.Core;

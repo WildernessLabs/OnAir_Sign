@@ -2,7 +2,7 @@
 using Meadow.Peripherals.Displays;
 using System.Threading;
 
-namespace MeadowOnAir_Sign.Controllers;
+namespace MeadowOnAir_Sign.Core.Controllers;
 
 public class DisplayController
 {

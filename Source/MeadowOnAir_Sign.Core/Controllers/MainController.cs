@@ -3,9 +3,10 @@ using Meadow.Foundation.Web.Maple;
 using Meadow.Gateways;
 using Meadow.Hardware;
 using Meadow.Peripherals.Displays;
+using MeadowOnAir_Sign.Core.Connectivity;
 using System.Threading.Tasks;
 
-namespace MeadowOnAir_Sign.Controllers;
+namespace MeadowOnAir_Sign.Core.Controllers;
 
 public class MainController
 {
