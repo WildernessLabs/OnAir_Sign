@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>10.0</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Meadow.Desktop" Version="1.15.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\MeadowOnAir_Sign.Core\MeadowOnAir_Sign.Core.csproj" />
+    </ItemGroup>
+</Project>
