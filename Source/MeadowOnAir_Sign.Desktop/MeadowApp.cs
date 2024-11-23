@@ -7,14 +7,14 @@ namespace MeadowOnAir_Sign.Desktop;
 
 public class MeadowApp : App<Meadow.Desktop>
 {
-    public override Task Initialize()
+    public override async Task Initialize()
     {
         Resolver.Log.Info($"Initializing {this.GetType().Name}");
 
         Device.Display!.Resize(32, 8, 20);
-        _ = new MainController(Device.Display, null, null);
 
-        return base.Initialize();
+        var mainController = new MainController(Device.Display, null, null);
+        await mainController.Initialize();
     }
 
     public override Task Run()
