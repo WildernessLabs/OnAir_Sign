@@ -33,7 +33,6 @@ public class BluetoothServer
             uuid: CharacteristicsConstants.PAIRING,
             permissions: CharacteristicPermission.Read | CharacteristicPermission.Write,
             properties: CharacteristicProperty.Read | CharacteristicProperty.Write);
-        pairingCharacteristic.ValueSet += PairingCharacteristicValueSet;
 
         OnAirTextCharacteristic = new CharacteristicString(
             name: "ON_AIR_SIGN_TEXT",
@@ -41,6 +40,8 @@ public class BluetoothServer
             maxLength: 20,
             permissions: CharacteristicPermission.Read | CharacteristicPermission.Write,
             properties: CharacteristicProperty.Read | CharacteristicProperty.Write);
+
+        pairingCharacteristic.ValueSet += PairingCharacteristicValueSet;
         OnAirTextCharacteristic.ValueSet += OnAirTextCharacteristicValueSet;
 
         var service = new Service(

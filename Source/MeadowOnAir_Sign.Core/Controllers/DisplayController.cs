@@ -20,15 +20,6 @@ public class DisplayController
         };
     }
 
-    //private void Initialize()
-    //{
-    //    var ledDisplay = new Max7219(
-    //        MeadowApp.Device.CreateSpiBus(),
-    //        MeadowApp.Device.Pins.D00,
-    //        deviceCount: 4,
-    //        maxMode: Max7219.Max7219Mode.Display);
-    //}
-
     public void ShowSplashScreen()
     {
         graphics.Clear();

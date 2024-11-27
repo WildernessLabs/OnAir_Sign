@@ -1,20 +1,27 @@
-﻿namespace MobileOnAir_Sign.View
+﻿namespace MobileOnAir_Sign.View;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        void BtnMapleClicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new MaplePage());
-        }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
 
-        void BtnBluetoothClicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new BluetoothPage());
-        }
+        await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+        await Permissions.RequestAsync<Permissions.Bluetooth>();
+    }
+
+    void BtnMapleClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new MaplePage());
+    }
+
+    void BtnBluetoothClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new BluetoothPage());
     }
 }

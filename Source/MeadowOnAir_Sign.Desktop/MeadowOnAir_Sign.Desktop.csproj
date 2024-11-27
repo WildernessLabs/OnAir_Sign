@@ -5,10 +5,16 @@
         <Nullable>enable</Nullable>
         <LangVersion>10.0</LangVersion>
     </PropertyGroup>
+    
+    <!--<ItemGroup>
+        <PackageReference Include="Meadow.Desktop" Version="1.15.0" />
+    </ItemGroup>-->
+
     <ItemGroup>
-      <PackageReference Include="Meadow.Desktop" Version="1.15.0" />
+        <ProjectReference Include="..\..\..\Meadow.Core\Source\implementations\desktop\Meadow.Desktop\Meadow.Desktop.csproj" />
     </ItemGroup>
+
     <ItemGroup>
-      <ProjectReference Include="..\MeadowOnAir_Sign.Core\MeadowOnAir_Sign.Core.csproj" />
+        <ProjectReference Include="..\MeadowOnAir_Sign.Core\MeadowOnAir_Sign.Core.csproj" />
     </ItemGroup>
 </Project>
