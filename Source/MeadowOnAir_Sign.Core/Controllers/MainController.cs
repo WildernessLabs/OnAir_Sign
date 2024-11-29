@@ -11,14 +11,14 @@ namespace MeadowOnAir_Sign.Core.Controllers;
 public class MainController
 {
     // Connect via Maple (WiFi) or Bluetooth? 
-    //private ConnectionType connectionType = ConnectionType.Bluetooth;
-    private ConnectionType connectionType = ConnectionType.WiFi;
+    private ConnectionType connectionType = ConnectionType.Bluetooth;
+    //private ConnectionType connectionType = ConnectionType.WiFi;
 
     private IPixelDisplay display;
     private IBluetoothAdapter ble;
     private IWiFiNetworkAdapter wifi;
 
-    private DisplayController displayController;
+    //private DisplayController displayController;
     private CommandController commandController;
     private BluetoothServer bluetoothServer;
 
@@ -31,13 +31,15 @@ public class MainController
 
     public async Task Initialize()
     {
-        displayController = new DisplayController(display);
-        displayController.ShowSplashScreen();
+        //displayController = new DisplayController(display);
+        //displayController.ShowSplashScreen();
 
         commandController = new CommandController();
         commandController.TextValueSet += (s, e) =>
         {
-            displayController.ShowText(e);
+            //displayController.ShowText(e);
+
+            Resolver.Log.Info($"{e}");
         };
 
         if (connectionType == ConnectionType.WiFi)
@@ -52,14 +54,14 @@ public class MainController
 
     private async Task StartMapleServer()
     {
-        displayController.ShowText("Joining wifi");
+        //displayController.ShowText("Joining wifi");
 
         wifi.NetworkConnected += (s, e) =>
         {
             var mapleServer = new MapleServer(s.IpAddress, 5417, advertise: true, logger: Resolver.Log);
             mapleServer.Start();
 
-            displayController.ShowText($"{s.IpAddress}");
+            //displayController.ShowText($"{s.IpAddress}");
         };
 
         await wifi.Connect(Secrets.WIFI_NAME, Secrets.WIFI_PASSWORD);
@@ -71,9 +73,9 @@ public class MainController
 
         commandController.PairingValueSet += (s, e) =>
         {
-            displayController.ShowText(e
-                ? "Paired"
-                : "Pairable...");
+            //displayController.ShowText(e
+            //    ? "Paired"
+            //    : "Pairable...");
         };
 
         var definition = bluetoothServer.GetDefinition();

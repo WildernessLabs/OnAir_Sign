@@ -37,7 +37,7 @@ public class BluetoothServer
         OnAirTextCharacteristic = new CharacteristicString(
             name: "ON_AIR_SIGN_TEXT",
             uuid: CharacteristicsConstants.ON_AIR_SIGN_TEXT,
-            maxLength: 20,
+            maxLength: 256,
             permissions: CharacteristicPermission.Read | CharacteristicPermission.Write,
             properties: CharacteristicProperty.Read | CharacteristicProperty.Write);
 
