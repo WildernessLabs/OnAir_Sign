@@ -86,6 +86,8 @@ public class BluetoothViewModel : BaseViewModel
 
         IDevice device = e.Device;
 
+        await deviceSelected.RequestMtuAsync(500);
+
         var services = await device.GetServicesAsync();
 
         foreach (var serviceItem in services)
